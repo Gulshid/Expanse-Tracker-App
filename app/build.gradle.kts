@@ -40,6 +40,10 @@ android {
 
 dependencies {
 
+    val navVersion = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
     // Import the Firebase BoM (Bill of Materials)
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 

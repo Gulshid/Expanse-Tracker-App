@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Expanse Tracker</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Sign in to track your expenses</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">Sign In</string>
+    <string name="go_to_register">Don\'t have an account? Sign Up</string>
 </resources>
