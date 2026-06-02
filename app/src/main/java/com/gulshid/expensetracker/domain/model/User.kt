@@ -1,4 +1,4 @@
-package com.gulshid.expansetracker.domain.model
+package com.gulshid.expensetracker.domain.model
 
 
 data class User(

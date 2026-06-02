@@ -1,4 +1,4 @@
-package com.gulshid.expansetracker.data
+package com.gulshid.expensetracker.data
 
 
 sealed class Resource<out T> {

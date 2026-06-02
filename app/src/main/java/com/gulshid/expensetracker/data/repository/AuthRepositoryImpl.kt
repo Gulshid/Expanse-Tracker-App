@@ -1,9 +1,9 @@
-package com.gulshid.expansetracker.data.repository
+package com.gulshid.expensetracker.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
-import com.gulshid.expansetracker.data.Resource
-import com.gulshid.expansetracker.domain.model.User
-import com.gulshid.expansetracker.domain.repository.AuthRepository
+import com.gulshid.expensetracker.data.Resource
+import com.gulshid.expensetracker.domain.model.User
+import com.gulshid.expensetracker.domain.repository.AuthRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow

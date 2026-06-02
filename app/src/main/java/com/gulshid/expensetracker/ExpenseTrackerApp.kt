@@ -1,4 +1,4 @@
-package com.gulshid.expansetracker
+package com.gulshid.expensetracker
 
 
 import android.app.Application

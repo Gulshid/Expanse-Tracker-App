@@ -1,4 +1,4 @@
-package com.gulshid.expansetracker.ui.dashboard
+package com.gulshid.expensetracker.ui.dashboard
 
 
 import android.os.Bundle
