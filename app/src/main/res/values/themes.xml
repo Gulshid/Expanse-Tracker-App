@@ -1,9 +1,50 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
 
+        <!-- Primary: Teal Cyan -->
+        <item name="colorPrimary">#006874</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#A2EEFF</item>
+        <item name="colorOnPrimaryContainer">#001F24</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">#4A6367</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#CCE8EC</item>
+        <item name="colorOnSecondaryContainer">#051F23</item>
+
+        <!-- Tertiary -->
+        <item name="colorTertiary">#526077</item>
+        <item name="colorOnTertiary">#FFFFFF</item>
+        <item name="colorTertiaryContainer">#D9E3FF</item>
+        <item name="colorOnTertiaryContainer">#0D1C35</item>
+
+        <!-- Error -->
+        <item name="colorError">#BA1A1A</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorErrorContainer">#FFDAD6</item>
+        <item name="colorOnErrorContainer">#410002</item>
+
+        <!-- Surface & Background -->
+        <item name="colorSurface">#FAFDFD</item>
+        <item name="colorOnSurface">#191C1D</item>
+        <item name="colorSurfaceVariant">#DBE4E6</item>
+        <item name="colorOnSurfaceVariant">#3F4849</item>
+        <item name="colorSurfaceContainerLowest">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F4F7F8</item>
+        <item name="colorSurfaceContainer">#EEF1F2</item>
+        <item name="colorSurfaceContainerHigh">#E8EBEC</item>
+        <item name="colorSurfaceContainerHighest">#E2E6E6</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">#6F797A</item>
+        <item name="colorOutlineVariant">#BFC8CA</item>
+
+        <!-- Inverse -->
+<!--        <item name="colorInverseSurface">#2D3132</item>-->
+<!--        <item name="colorInverseOnSurface">#EFF1F1</item>-->
+<!--        <item name="colorInversePrimary">#4DD9EC</item>-->
+
+    </style>
     <style name="Theme.ExpanseTracker" parent="Base.Theme.ExpanseTracker" />
 </resources>

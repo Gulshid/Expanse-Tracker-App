@@ -92,6 +92,7 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/mac/.grad
 MERGED from [androidx.core:core-viewtree:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/c0c67228e01d036a635974b4c0952a1d/transformed/core-viewtree-1.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] /Users/mac/.gradle/caches/8.11.1/transforms/2c90483687fcc8a515cc32e042dbd912/transformed/googleid-1.1.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mac/.gradle/caches/8.11.1/transforms/46d4cdbf75f1f67f22d370517b583210/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/mac/.gradle/caches/8.11.1/transforms/a430e389ae2e49847e3c4434016d3739/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:2:1-20:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/4a0b82de339817a7cea32ff123536c88/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/05c4701d2fea2d977cab0f0dbead5ba5/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/mac/.gradle/caches/8.11.1/transforms/177d9c01ac1649c78e2452d26cb08de2/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
@@ -404,6 +405,8 @@ MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] /Use
 MERGED from [com.google.android.libraries.identity.googleid:googleid:1.1.0] /Users/mac/.gradle/caches/8.11.1/transforms/2c90483687fcc8a515cc32e042dbd912/transformed/googleid-1.1.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mac/.gradle/caches/8.11.1/transforms/46d4cdbf75f1f67f22d370517b583210/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/mac/.gradle/caches/8.11.1/transforms/46d4cdbf75f1f67f22d370517b583210/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/mac/.gradle/caches/8.11.1/transforms/a430e389ae2e49847e3c4434016d3739/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/mac/.gradle/caches/8.11.1/transforms/a430e389ae2e49847e3c4434016d3739/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/4a0b82de339817a7cea32ff123536c88/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/4a0b82de339817a7cea32ff123536c88/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/mac/.gradle/caches/8.11.1/transforms/05c4701d2fea2d977cab0f0dbead5ba5/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44

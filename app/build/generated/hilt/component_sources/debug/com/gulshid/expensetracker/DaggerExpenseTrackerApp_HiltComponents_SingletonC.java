@@ -22,6 +22,7 @@ import com.gulshid.expensetracker.domain.usecase.DeleteExpenseUseCase;
 import com.gulshid.expensetracker.domain.usecase.GetExpensesUseCase;
 import com.gulshid.expensetracker.ui.MainActivity;
 import com.gulshid.expensetracker.ui.MainActivity_MembersInjector;
+import com.gulshid.expensetracker.ui.analytics.AnalyticsFragment;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
@@ -339,6 +340,10 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
       this.activityCImpl = activityCImpl;
 
 
+    }
+
+    @Override
+    public void injectAnalyticsFragment(AnalyticsFragment arg0) {
     }
 
     @Override

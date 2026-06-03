@@ -25,15 +25,12 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
     private val binding get() = _binding!!
 
     private val viewModel: ExpenseViewModel by viewModels()
-
     private var selectedDateMillis: Long = System.currentTimeMillis()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAddExpenseBinding.bind(view)
-
         binding.etDate.setText(formatDate(selectedDateMillis))
-
         setupListeners()
         observeActionState()
     }
@@ -41,14 +38,13 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
     private fun setupListeners() {
         binding.tilDate.setEndIconOnClickListener { showDatePicker() }
         binding.etDate.setOnClickListener { showDatePicker() }
-
         binding.btnSaveExpense.setOnClickListener {
             if (validateInputs()) {
                 viewModel.saveExpense(
-                    amount        = binding.etAmount.text.toString().trim().toDouble(),
-                    category      = getSelectedCategory(),
-                    description   = binding.etDescription.text.toString().trim(),
-                    paymentMethod = getSelectedPaymentMethod(),
+                    amount          = binding.etAmount.text.toString().trim().toDouble(),
+                    category        = getSelectedCategory(),
+                    description     = binding.etDescription.text.toString().trim(),
+                    paymentMethod   = getSelectedPaymentMethod(),
                     timestampMillis = selectedDateMillis
                 )
             }
@@ -60,14 +56,8 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.actionState.collect { state ->
                     when (state) {
-                        is ExpenseState.Idle -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.btnSaveExpense.isEnabled = true
-                        }
-                        is ExpenseState.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                            binding.btnSaveExpense.isEnabled = false
-                        }
+                        is ExpenseState.Idle        -> { binding.progressBar.visibility = View.GONE; binding.btnSaveExpense.isEnabled = true }
+                        is ExpenseState.Loading     -> { binding.progressBar.visibility = View.VISIBLE; binding.btnSaveExpense.isEnabled = false }
                         is ExpenseState.SaveSuccess -> {
                             binding.progressBar.visibility = View.GONE
                             binding.btnSaveExpense.isEnabled = true
@@ -75,7 +65,7 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
                             viewModel.resetActionState()
                             findNavController().popBackStack()
                         }
-                        is ExpenseState.Error -> {
+                        is ExpenseState.Error       -> {
                             binding.progressBar.visibility = View.GONE
                             binding.btnSaveExpense.isEnabled = true
                             Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
@@ -89,23 +79,23 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
     }
 
     private fun showDatePicker() {
-        val picker = MaterialDatePicker.Builder.datePicker()
+        MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select date")
             .setSelection(selectedDateMillis)
             .build()
-
-        picker.addOnPositiveButtonClickListener { millis ->
-            selectedDateMillis = millis
-            binding.etDate.setText(formatDate(millis))
-        }
-        picker.show(parentFragmentManager, "DATE_PICKER")
+            .also { picker ->
+                picker.addOnPositiveButtonClickListener { millis ->
+                    selectedDateMillis = millis
+                    binding.etDate.setText(formatDate(millis))
+                }
+                picker.show(parentFragmentManager, "DATE_PICKER")
+            }
     }
 
     private fun validateInputs(): Boolean {
-        val amountStr = binding.etAmount.text.toString().trim()
-        if (amountStr.isEmpty() || amountStr.toDoubleOrNull() == null || amountStr.toDouble() <= 0.0) {
-            binding.tilAmount.error = "Please enter a valid amount"
-            return false
+        val a = binding.etAmount.text.toString().trim()
+        if (a.isEmpty() || a.toDoubleOrNull() == null || a.toDouble() <= 0.0) {
+            binding.tilAmount.error = "Please enter a valid amount"; return false
         }
         binding.tilAmount.error = null
         if (binding.chipGroupCategory.checkedChipId == View.NO_ID) {
@@ -115,27 +105,19 @@ class AddExpenseFragment : Fragment(R.layout.fragment_add_expense) {
         return true
     }
 
-    private fun getSelectedCategory(): String = when (binding.chipGroupCategory.checkedChipId) {
-        R.id.chipFood          -> "Food"
-        R.id.chipTransport     -> "Transport"
-        R.id.chipShopping      -> "Shopping"
-        R.id.chipHealth        -> "Health"
-        R.id.chipEntertainment -> "Entertainment"
-        else                   -> "Other"
+    private fun getSelectedCategory() = when (binding.chipGroupCategory.checkedChipId) {
+        R.id.chipFood -> "Food"; R.id.chipTransport -> "Transport"
+        R.id.chipShopping -> "Shopping"; R.id.chipHealth -> "Health"
+        R.id.chipEntertainment -> "Entertainment"; else -> "Other"
     }
 
-    private fun getSelectedPaymentMethod(): String = when (binding.chipGroupPayment.checkedChipId) {
-        R.id.chipCash   -> "Cash"
-        R.id.chipCard   -> "Card"
-        R.id.chipOnline -> "Online"
-        else            -> "Cash"
+    private fun getSelectedPaymentMethod() = when (binding.chipGroupPayment.checkedChipId) {
+        R.id.chipCash -> "Cash"; R.id.chipCard -> "Card"
+        R.id.chipOnline -> "Online"; else -> "Cash"
     }
 
-    private fun formatDate(millis: Long): String =
+    private fun formatDate(millis: Long) =
         SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Date(millis))
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }

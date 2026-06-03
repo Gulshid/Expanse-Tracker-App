@@ -1,8 +1,7 @@
 <resources>
-    <!-- App -->
     <string name="app_name">Expense Tracker</string>
 
-    <!-- Login screen -->
+    <!-- Login -->
     <string name="login_title">Welcome Back</string>
     <string name="login_subtitle">Sign in to track your expenses</string>
     <string name="email_hint">Email Address</string>
@@ -10,7 +9,7 @@
     <string name="login_btn">Sign In</string>
     <string name="go_to_register">Don\'t have an account? Sign Up</string>
 
-    <!-- Register screen -->
+    <!-- Register -->
     <string name="register_title">Create Account</string>
     <string name="register_subtitle">Start tracking your expenses today</string>
     <string name="display_name_hint">Full Name</string>
@@ -22,8 +21,9 @@
     <string name="nav_dashboard">Home</string>
     <string name="nav_add">Add</string>
     <string name="nav_history">History</string>
+    <string name="nav_analytics">Analytics</string>
 
-    <!-- Dashboard screen -->
+    <!-- Dashboard -->
     <string name="greeting_default">Good morning,</string>
     <string name="user_name_placeholder">User</string>
     <string name="total_spent_label">Total Spent</string>
@@ -35,7 +35,7 @@
     <string name="see_all_label">See All</string>
     <string name="no_expenses_yet">No expenses yet.\nTap + to add your first one!</string>
 
-    <!-- Add Expense screen -->
+    <!-- Add Expense -->
     <string name="add_expense_title">Add Expense</string>
     <string name="amount_hint">0.00</string>
     <string name="description_hint">What did you spend on?</string>
@@ -53,15 +53,19 @@
     <string name="payment_online">📱 Online</string>
     <string name="save_expense_btn">Save Expense</string>
 
-    <!-- History screen -->
+    <!-- History -->
     <string name="history_title">History</string>
     <string name="filter_all">All</string>
     <string name="filter_this_week">This Week</string>
     <string name="filter_this_month">This Month</string>
     <string name="filter_last_3_months">Last 3 Months</string>
 
-    <!-- Expense actions -->
-    <string name="delete_expense_hint">Long press an expense to delete it</string>
+    <!-- Analytics (Phase 5) -->
+    <string name="analytics_title">Analytics</string>
+    <string name="breakdown_by_category">Breakdown by Category</string>
+    <string name="no_data_for_chart">No expense data yet.\nAdd some expenses to see your analytics!</string>
+
+    <!-- Actions -->
     <string name="expense_deleted">Expense deleted</string>
     <string name="expense_saved">Expense saved!</string>
 </resources>

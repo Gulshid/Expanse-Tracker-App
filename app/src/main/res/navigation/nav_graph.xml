@@ -5,22 +5,16 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
-    <!-- ───── Auth screens (no bottom nav) ───── -->
-
+    <!-- ── Auth screens ── -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.gulshid.expensetracker.ui.auth.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
-
-        <action
-            android:id="@+id/action_loginFragment_to_dashboardFragment"
+        <action android:id="@+id/action_loginFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
-
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:popUpTo="@id/nav_graph" app:popUpToInclusive="true" />
+        <action android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
     </fragment>
 
@@ -29,30 +23,21 @@
         android:name="com.gulshid.expensetracker.ui.auth.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register">
-
-        <action
-            android:id="@+id/action_registerFragment_to_dashboardFragment"
+        <action android:id="@+id/action_registerFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
-
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:popUpTo="@id/nav_graph" app:popUpToInclusive="true" />
+        <action android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/registerFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/registerFragment" app:popUpToInclusive="true" />
     </fragment>
 
-    <!-- ───── Main app screens (bottom nav visible) ───── -->
-
+    <!-- ── Main app screens ── -->
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.gulshid.expensetracker.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
-
-        <action
-            android:id="@+id/action_dashboardFragment_to_addExpenseFragment"
+        <action android:id="@+id/action_dashboardFragment_to_addExpenseFragment"
             app:destination="@id/addExpenseFragment" />
     </fragment>
 
@@ -67,5 +52,12 @@
         android:name="com.gulshid.expensetracker.ui.history.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
+
+    <!-- Phase 5: Analytics screen -->
+    <fragment
+        android:id="@+id/analyticsFragment"
+        android:name="com.gulshid.expensetracker.ui.analytics.AnalyticsFragment"
+        android:label="Analytics"
+        tools:layout="@layout/fragment_analytics" />
 
 </navigation>

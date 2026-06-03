@@ -8,6 +8,7 @@ import com.gulshid.expensetracker.ui.auth.LoginFragment_GeneratedInjector;
 import com.gulshid.expensetracker.ui.auth.RegisterFragment_GeneratedInjector;
 import com.gulshid.expensetracker.ui.dashboard.DashboardFragment_GeneratedInjector;
 import com.gulshid.expensetracker.ui.expense.AddExpenseFragment_GeneratedInjector;
+import com.gulshid.expensetracker.ui.expense.ExpenseViewModel_HiltModules;
 import com.gulshid.expensetracker.ui.history.HistoryFragment_GeneratedInjector;
 import dagger.Binds;
 import dagger.Component;
@@ -164,6 +165,7 @@ public final class ExpenseTrackerApp_HiltComponents {
           AuthViewModel_HiltModules.KeyModule.class,
           ActivityCBuilderModule.class,
           ViewModelCBuilderModule.class,
+          ExpenseViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           HiltWrapper_SavedStateHandleModule.class
       }
@@ -202,6 +204,7 @@ public final class ExpenseTrackerApp_HiltComponents {
   @Subcomponent(
       modules = {
           AuthViewModel_HiltModules.BindsModule.class,
+          ExpenseViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class
       }
   )

@@ -28,12 +28,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var firebaseAuth: FirebaseAuth
+    @Inject lateinit var firebaseAuth: FirebaseAuth
 
-    // Shared ViewModel — same instance as HistoryFragment when scoped to Activity
-    private val expenseViewModel: ExpenseViewModel by viewModels()
-
+    private val viewModel: ExpenseViewModel by viewModels()
     private lateinit var expenseAdapter: ExpenseAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,26 +56,26 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     }
 
     private fun setupCategoryChips() {
-        val categories = listOf(
-            "All" to "📊", "Food" to "🍔", "Transport" to "🚗",
-            "Shopping" to "🛍️", "Health" to "💊", "Entertainment" to "🎬", "Other" to "📦"
-        )
-        categories.forEachIndexed { index, (label, emoji) ->
+        val categories = listOf("All", "Food", "Transport", "Shopping", "Health", "Entertainment", "Other")
+        val emojis     = listOf("📊", "🍔", "🚗", "🛍️", "💊", "🎬", "📦")
+
+        categories.forEachIndexed { index, label ->
             val chip = Chip(requireContext()).apply {
-                text            = "$emoji $label"
+                text            = "${emojis[index]} $label"
                 isCheckable     = true
                 isChecked       = index == 0
                 chipStrokeWidth = 1f
                 setChipBackgroundColorResource(android.R.color.transparent)
+                setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) viewModel.setCategoryFilter(label)
+                }
             }
             binding.chipGroupCategories.addView(chip)
         }
     }
 
     private fun setupRecyclerView() {
-        expenseAdapter = ExpenseAdapter(
-            onDeleteClick = { expense -> expenseViewModel.deleteExpense(expense.id) }
-        )
+        expenseAdapter = ExpenseAdapter(onDeleteClick = { viewModel.deleteExpense(it.id) })
         binding.rvRecentExpenses.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = expenseAdapter
@@ -97,43 +94,44 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private fun observeExpenses() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                expenseViewModel.expenseListState.collect { state ->
-                    when (state) {
-                        is ExpenseListState.Loading -> {
-                            binding.tvEmptyState.visibility = View.GONE
+                launch {
+                    viewModel.expenseListState.collect { state ->
+                        when (state) {
+                            is ExpenseListState.Loading -> Unit
+                            is ExpenseListState.Success -> render(state.expenses)
+                            is ExpenseListState.Error   -> {
+                                binding.tvEmptyState.visibility = View.VISIBLE
+                                binding.tvEmptyState.text = state.message
+                            }
                         }
-                        is ExpenseListState.Success -> {
-                            updateDashboard(state.expenses)
-                        }
-                        is ExpenseListState.Error -> {
-                            binding.tvEmptyState.visibility = View.VISIBLE
-                            binding.tvEmptyState.text = state.message
-                        }
+                    }
+                }
+                // Re-render when category filter changes
+                launch {
+                    viewModel.activeCategoryFilter.collect {
+                        val state = viewModel.expenseListState.value
+                        if (state is ExpenseListState.Success) render(state.expenses)
                     }
                 }
             }
         }
     }
 
-    private fun updateDashboard(expenses: List<Expense>) {
-        // Update total amount card
-        val total = expenses.sumOf { it.amount }
+    private fun render(all: List<Expense>) {
+        val filtered = viewModel.categoryFilteredExpenses(all)
+        val total    = filtered.sumOf { it.amount }
         binding.tvTotalAmount.text = "$${"%.2f".format(total)}"
 
-        // Show only the 5 most recent on dashboard
-        val recent = expenses.take(5)
+        val recent = filtered.take(5)
         if (recent.isEmpty()) {
-            binding.tvEmptyState.visibility = View.VISIBLE
+            binding.tvEmptyState.visibility    = View.VISIBLE
             binding.rvRecentExpenses.visibility = View.GONE
         } else {
-            binding.tvEmptyState.visibility = View.GONE
+            binding.tvEmptyState.visibility    = View.GONE
             binding.rvRecentExpenses.visibility = View.VISIBLE
             expenseAdapter.submitList(recent)
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }

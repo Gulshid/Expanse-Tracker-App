@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_nav_history"
         android:title="@string/nav_history" />
 
+    <item
+        android:id="@+id/analyticsFragment"
+        android:icon="@drawable/ic_nav_analytics"
+        android:title="@string/nav_analytics" />
+
 </menu>

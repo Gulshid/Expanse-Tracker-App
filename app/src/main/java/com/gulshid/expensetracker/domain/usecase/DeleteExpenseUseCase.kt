@@ -7,7 +7,6 @@ import javax.inject.Inject
 class DeleteExpenseUseCase @Inject constructor(
     private val expenseRepository: ExpenseRepository
 ) {
-    suspend operator fun invoke(userId: String, expenseId: String): Resource<Unit> {
-        return expenseRepository.deleteExpense(userId, expenseId)
-    }
+    suspend operator fun invoke(userId: String, expenseId: String): Resource<Unit> =
+        expenseRepository.deleteExpense(userId, expenseId)
 }

@@ -13,11 +13,6 @@ class ExpenseTrackerApp : Application() {
         enableFirestoreOfflinePersistence()
     }
 
-    /**
-     * Enables Firestore offline persistence so the app works without
-     * internet and syncs automatically when the connection is restored.
-     * Must be called before any Firestore reads/writes.
-     */
     private fun enableFirestoreOfflinePersistence() {
         val settings = FirebaseFirestoreSettings.Builder()
             .setPersistenceEnabled(true)

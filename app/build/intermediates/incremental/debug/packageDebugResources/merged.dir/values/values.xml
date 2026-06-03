@@ -17,7 +17,9 @@
     <string name="add_expense_title">Add Expense</string>
     <string name="amount_hint">0.00</string>
     <string name="amount_placeholder">$0.00</string>
+    <string name="analytics_title">Analytics</string>
     <string name="app_name">Expense Tracker</string>
+    <string name="breakdown_by_category">Breakdown by Category</string>
     <string name="categories_label">Categories</string>
     <string name="category_entertainment">🎬 Entertainment</string>
     <string name="category_food">🍔 Food</string>
@@ -28,7 +30,6 @@
     <string name="category_transport">🚗 Transport</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="date_hint">Date</string>
-    <string name="delete_expense_hint">Long press an expense to delete it</string>
     <string name="description_hint">What did you spend on?</string>
     <string name="display_name_hint">Full Name</string>
     <string name="email_hint">Email Address</string>
@@ -52,8 +53,10 @@
     <string name="login_subtitle">Sign in to track your expenses</string>
     <string name="login_title">Welcome Back</string>
     <string name="nav_add">Add</string>
+    <string name="nav_analytics">Analytics</string>
     <string name="nav_dashboard">Home</string>
     <string name="nav_history">History</string>
+    <string name="no_data_for_chart">No expense data yet.\nAdd some expenses to see your analytics!</string>
     <string name="no_expenses_yet">No expenses yet.\nTap + to add your first one!</string>
     <string name="password_hint">Password</string>
     <string name="payment_card">💳 Card</string>
@@ -71,8 +74,51 @@
     <string name="total_spent_label">Total Spent</string>
     <string name="user_name_placeholder">User</string>
     <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.DayNight.NoActionBar">
+
         
+        <item name="colorPrimary">#006874</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#A2EEFF</item>
+        <item name="colorOnPrimaryContainer">#001F24</item>
+
         
+        <item name="colorSecondary">#4A6367</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#CCE8EC</item>
+        <item name="colorOnSecondaryContainer">#051F23</item>
+
+        
+        <item name="colorTertiary">#526077</item>
+        <item name="colorOnTertiary">#FFFFFF</item>
+        <item name="colorTertiaryContainer">#D9E3FF</item>
+        <item name="colorOnTertiaryContainer">#0D1C35</item>
+
+        
+        <item name="colorError">#BA1A1A</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorErrorContainer">#FFDAD6</item>
+        <item name="colorOnErrorContainer">#410002</item>
+
+        
+        <item name="colorSurface">#FAFDFD</item>
+        <item name="colorOnSurface">#191C1D</item>
+        <item name="colorSurfaceVariant">#DBE4E6</item>
+        <item name="colorOnSurfaceVariant">#3F4849</item>
+        <item name="colorSurfaceContainerLowest">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F4F7F8</item>
+        <item name="colorSurfaceContainer">#EEF1F2</item>
+        <item name="colorSurfaceContainerHigh">#E8EBEC</item>
+        <item name="colorSurfaceContainerHighest">#E2E6E6</item>
+
+        
+        <item name="colorOutline">#6F797A</item>
+        <item name="colorOutlineVariant">#BFC8CA</item>
+
+        
+
+
+
+
     </style>
     <style name="Theme.ExpanseTracker" parent="Base.Theme.ExpanseTracker"/>
 </resources>

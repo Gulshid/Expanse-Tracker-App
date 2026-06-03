@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAuthPersistence() {
         if (firebaseAuth.currentUser != null) {
-            // Use NavOptions builder directly — no trailing lambda needed
             val options = NavOptions.Builder()
                 .setPopUpTo(R.id.nav_graph, true)
                 .build()
@@ -59,14 +58,13 @@ class MainActivity : AppCompatActivity() {
     private fun observeDestinationChanges() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val isAuthScreen = destination.id in authDestinations
-
             if (isAuthScreen) {
                 binding.bottomNavigationView.visibility = View.GONE
-                binding.navigationRailView?.visibility = View.GONE
+                binding.navigationRailView?.visibility  = View.GONE
             } else {
                 if (binding.navigationRailView != null) {
                     binding.navigationRailView!!.visibility = View.VISIBLE
-                    binding.bottomNavigationView.visibility = View.GONE
+                    binding.bottomNavigationView.visibility  = View.GONE
                 } else {
                     binding.bottomNavigationView.visibility = View.VISIBLE
                 }
@@ -74,7 +72,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+    override fun onSupportNavigateUp() = navController.navigateUp() || super.onSupportNavigateUp()
 }

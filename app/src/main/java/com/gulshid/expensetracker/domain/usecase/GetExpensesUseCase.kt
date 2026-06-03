@@ -9,7 +9,6 @@ import javax.inject.Inject
 class GetExpensesUseCase @Inject constructor(
     private val expenseRepository: ExpenseRepository
 ) {
-    operator fun invoke(userId: String): Flow<Resource<List<Expense>>> {
-        return expenseRepository.getExpenses(userId)
-    }
+    operator fun invoke(userId: String): Flow<Resource<List<Expense>>> =
+        expenseRepository.getExpenses(userId)
 }

@@ -11,14 +11,16 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        // Required for MPAndroidChart
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
-rootProject.name = "Expanse Tracker"
+rootProject.name = "Expanse_Tracker"
 include(":app")
- 

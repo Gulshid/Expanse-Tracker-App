@@ -3,6 +3,7 @@ package com.gulshid.expensetracker;
 import com.gulshid.expensetracker.di.AppModule;
 import com.gulshid.expensetracker.di.RepositoryModule;
 import com.gulshid.expensetracker.ui.MainActivity_GeneratedInjector;
+import com.gulshid.expensetracker.ui.analytics.AnalyticsFragment_GeneratedInjector;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules;
 import com.gulshid.expensetracker.ui.auth.LoginFragment_GeneratedInjector;
 import com.gulshid.expensetracker.ui.auth.RegisterFragment_GeneratedInjector;
@@ -230,7 +231,8 @@ public final class ExpenseTrackerApp_HiltComponents {
       modules = ViewWithFragmentCBuilderModule.class
   )
   @FragmentScoped
-  public abstract static class FragmentC implements LoginFragment_GeneratedInjector,
+  public abstract static class FragmentC implements AnalyticsFragment_GeneratedInjector,
+      LoginFragment_GeneratedInjector,
       RegisterFragment_GeneratedInjector,
       DashboardFragment_GeneratedInjector,
       AddExpenseFragment_GeneratedInjector,
