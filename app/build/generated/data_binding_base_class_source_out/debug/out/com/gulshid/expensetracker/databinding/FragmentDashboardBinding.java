@@ -4,12 +4,17 @@ package com.gulshid.expensetracker.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gulshid.expensetracker.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -17,19 +22,77 @@ import java.lang.String;
 
 public final class FragmentDashboardBinding implements ViewBinding {
   @NonNull
-  private final MaterialCardView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final TextView titleTv;
+  public final MaterialCardView cardSummary;
 
-  private FragmentDashboardBinding(@NonNull MaterialCardView rootView, @NonNull TextView titleTv) {
+  @NonNull
+  public final ChipGroup chipGroupCategories;
+
+  @NonNull
+  public final FloatingActionButton fabAddExpense;
+
+  @NonNull
+  public final HorizontalScrollView hsvCategories;
+
+  @NonNull
+  public final RecyclerView rvRecentExpenses;
+
+  @NonNull
+  public final TextView tvCategoryTitle;
+
+  @NonNull
+  public final TextView tvEmptyState;
+
+  @NonNull
+  public final TextView tvGreeting;
+
+  @NonNull
+  public final TextView tvRecentTitle;
+
+  @NonNull
+  public final TextView tvSeeAll;
+
+  @NonNull
+  public final TextView tvThisMonth;
+
+  @NonNull
+  public final TextView tvTotalAmount;
+
+  @NonNull
+  public final TextView tvTotalLabel;
+
+  @NonNull
+  public final TextView tvUserName;
+
+  private FragmentDashboardBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialCardView cardSummary, @NonNull ChipGroup chipGroupCategories,
+      @NonNull FloatingActionButton fabAddExpense, @NonNull HorizontalScrollView hsvCategories,
+      @NonNull RecyclerView rvRecentExpenses, @NonNull TextView tvCategoryTitle,
+      @NonNull TextView tvEmptyState, @NonNull TextView tvGreeting, @NonNull TextView tvRecentTitle,
+      @NonNull TextView tvSeeAll, @NonNull TextView tvThisMonth, @NonNull TextView tvTotalAmount,
+      @NonNull TextView tvTotalLabel, @NonNull TextView tvUserName) {
     this.rootView = rootView;
-    this.titleTv = titleTv;
+    this.cardSummary = cardSummary;
+    this.chipGroupCategories = chipGroupCategories;
+    this.fabAddExpense = fabAddExpense;
+    this.hsvCategories = hsvCategories;
+    this.rvRecentExpenses = rvRecentExpenses;
+    this.tvCategoryTitle = tvCategoryTitle;
+    this.tvEmptyState = tvEmptyState;
+    this.tvGreeting = tvGreeting;
+    this.tvRecentTitle = tvRecentTitle;
+    this.tvSeeAll = tvSeeAll;
+    this.tvThisMonth = tvThisMonth;
+    this.tvTotalAmount = tvTotalAmount;
+    this.tvTotalLabel = tvTotalLabel;
+    this.tvUserName = tvUserName;
   }
 
   @Override
   @NonNull
-  public MaterialCardView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -54,13 +117,94 @@ public final class FragmentDashboardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.titleTv;
-      TextView titleTv = ViewBindings.findChildViewById(rootView, id);
-      if (titleTv == null) {
+      id = R.id.cardSummary;
+      MaterialCardView cardSummary = ViewBindings.findChildViewById(rootView, id);
+      if (cardSummary == null) {
         break missingId;
       }
 
-      return new FragmentDashboardBinding((MaterialCardView) rootView, titleTv);
+      id = R.id.chipGroupCategories;
+      ChipGroup chipGroupCategories = ViewBindings.findChildViewById(rootView, id);
+      if (chipGroupCategories == null) {
+        break missingId;
+      }
+
+      id = R.id.fabAddExpense;
+      FloatingActionButton fabAddExpense = ViewBindings.findChildViewById(rootView, id);
+      if (fabAddExpense == null) {
+        break missingId;
+      }
+
+      id = R.id.hsvCategories;
+      HorizontalScrollView hsvCategories = ViewBindings.findChildViewById(rootView, id);
+      if (hsvCategories == null) {
+        break missingId;
+      }
+
+      id = R.id.rvRecentExpenses;
+      RecyclerView rvRecentExpenses = ViewBindings.findChildViewById(rootView, id);
+      if (rvRecentExpenses == null) {
+        break missingId;
+      }
+
+      id = R.id.tvCategoryTitle;
+      TextView tvCategoryTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvCategoryTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvEmptyState;
+      TextView tvEmptyState = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmptyState == null) {
+        break missingId;
+      }
+
+      id = R.id.tvGreeting;
+      TextView tvGreeting = ViewBindings.findChildViewById(rootView, id);
+      if (tvGreeting == null) {
+        break missingId;
+      }
+
+      id = R.id.tvRecentTitle;
+      TextView tvRecentTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvRecentTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSeeAll;
+      TextView tvSeeAll = ViewBindings.findChildViewById(rootView, id);
+      if (tvSeeAll == null) {
+        break missingId;
+      }
+
+      id = R.id.tvThisMonth;
+      TextView tvThisMonth = ViewBindings.findChildViewById(rootView, id);
+      if (tvThisMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTotalAmount;
+      TextView tvTotalAmount = ViewBindings.findChildViewById(rootView, id);
+      if (tvTotalAmount == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTotalLabel;
+      TextView tvTotalLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvTotalLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.tvUserName;
+      TextView tvUserName = ViewBindings.findChildViewById(rootView, id);
+      if (tvUserName == null) {
+        break missingId;
+      }
+
+      return new FragmentDashboardBinding((CoordinatorLayout) rootView, cardSummary,
+          chipGroupCategories, fabAddExpense, hsvCategories, rvRecentExpenses, tvCategoryTitle,
+          tvEmptyState, tvGreeting, tvRecentTitle, tvSeeAll, tvThisMonth, tvTotalAmount,
+          tvTotalLabel, tvUserName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

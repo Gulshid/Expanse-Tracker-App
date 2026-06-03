@@ -4,7 +4,7 @@
             "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/cfb14f64cb3d9589e2845a1c99cf1e8d/transformed/material-1.11.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/1cc6c1741f8b0474b598cc373a46ae0d/transformed/material-1.12.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

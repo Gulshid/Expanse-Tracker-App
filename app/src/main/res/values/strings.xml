@@ -1,9 +1,62 @@
 <resources>
-    <string name="app_name">Expanse Tracker</string>
+    <!-- App -->
+    <string name="app_name">Expense Tracker</string>
+
+    <!-- Login screen -->
     <string name="login_title">Welcome Back</string>
     <string name="login_subtitle">Sign in to track your expenses</string>
     <string name="email_hint">Email Address</string>
     <string name="password_hint">Password</string>
     <string name="login_btn">Sign In</string>
     <string name="go_to_register">Don\'t have an account? Sign Up</string>
+
+    <!-- Register screen -->
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Start tracking your expenses today</string>
+    <string name="display_name_hint">Full Name</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="register_btn">Create Account</string>
+    <string name="go_to_login">Already have an account? Sign In</string>
+
+    <!-- Bottom nav -->
+    <string name="nav_dashboard">Home</string>
+    <string name="nav_add">Add</string>
+    <string name="nav_history">History</string>
+
+    <!-- Dashboard screen -->
+    <string name="greeting_default">Good morning,</string>
+    <string name="user_name_placeholder">User</string>
+    <string name="total_spent_label">Total Spent</string>
+    <string name="amount_placeholder">$0.00</string>
+    <string name="this_month_label">This month</string>
+    <string name="fab_add_expense_desc">Add new expense</string>
+    <string name="categories_label">Categories</string>
+    <string name="recent_expenses_label">Recent Expenses</string>
+    <string name="see_all_label">See All</string>
+    <string name="no_expenses_yet">No expenses yet.\nTap + to add your first one!</string>
+
+    <!-- Add Expense screen -->
+    <string name="add_expense_title">Add Expense</string>
+    <string name="amount_hint">0.00</string>
+    <string name="description_hint">What did you spend on?</string>
+    <string name="category_label">Category</string>
+    <string name="category_food">🍔 Food</string>
+    <string name="category_transport">🚗 Transport</string>
+    <string name="category_shopping">🛍️ Shopping</string>
+    <string name="category_health">💊 Health</string>
+    <string name="category_entertainment">🎬 Entertainment</string>
+    <string name="category_other">📦 Other</string>
+    <string name="date_hint">Date</string>
+    <string name="payment_method_label">Payment Method</string>
+    <string name="payment_cash">💵 Cash</string>
+    <string name="payment_card">💳 Card</string>
+    <string name="payment_online">📱 Online</string>
+    <string name="save_expense_btn">Save Expense</string>
+
+    <!-- History screen -->
+    <string name="history_title">History</string>
+    <string name="filter_all">All</string>
+    <string name="filter_this_week">This Week</string>
+    <string name="filter_this_month">This Month</string>
+    <string name="filter_last_3_months">Last 3 Months</string>
 </resources>

@@ -67,6 +67,7 @@
     <string name="common_signin_button_text">ចូល</string>
     <string name="common_signin_button_text_long">ចូលដោយប្រើ Google</string>
     <string msgid="3260749812566568062" name="copy_toast_msg">"បាន​ចម្លង​តំណ​ទៅឃ្លីបបត"</string>
+    <string name="error_a11y_label">បញ្ហា៖ មិនត្រឹមត្រូវ</string>
     <string name="error_icon_content_description">បញ្ហា</string>
     <string name="exposed_dropdown_menu_content_description">បង្ហាញ​ម៉ឺនុយ​ធ្លាក់ចុះ</string>
     <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"ចម្លង​តំណ"</string>
@@ -88,6 +89,9 @@
     <string name="material_timepicker_select_time">ជ្រើស​ម៉ោង</string>
     <string name="material_timepicker_text_input_mode_description">ប្តូរ​ទៅ​មុខងារ​បញ្ចូល​អក្សរ​សម្រាប់​ការ​បញ្ចូល​ម៉ោង។</string>
     <string name="mtrl_badge_numberless_content_description">ការជូនដំណឹងថ្មី</string>
+    <string name="mtrl_checkbox_state_description_checked">បាន​ធីក</string>
+    <string name="mtrl_checkbox_state_description_indeterminate">បានធីកខ្លះ</string>
+    <string name="mtrl_checkbox_state_description_unchecked">មិន​បាន​ធីក</string>
     <string name="mtrl_chip_close_icon_content_description">លុប %1$s</string>
     <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">ការជូនដំណឹង​ថ្មីៗ​លើស %1$d ហើយ</string>
     <string name="mtrl_picker_a11y_next_month">ប្ដូរ​ទៅ​ខែបន្ទាប់</string>
@@ -100,7 +104,7 @@
     <string name="mtrl_picker_date_header_selected">%1$s</string>
     <string name="mtrl_picker_date_header_title">ជ្រើសរើស​កាល​បរិច្ឆេទ</string>
     <string name="mtrl_picker_date_header_unselected">កាលបរិច្ឆេទដែលបាន​ជ្រើសរើស</string>
-    <string name="mtrl_picker_day_of_week_column_header">ជួរឈរ​នៃ​ថ្ងៃ៖ %1$s</string>
+    <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
     <string name="mtrl_picker_end_date_description">កាលបរិច្ឆេទ​បញ្ចប់ %1$s</string>
     <string name="mtrl_picker_invalid_format">ទម្រង់មិន​ត្រឹមត្រូវទេ។</string>
     <string name="mtrl_picker_invalid_format_example">ឧទាហរណ៍៖ %1$s</string>
@@ -133,5 +137,8 @@
     <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"បើកថតរុករក"</string>
     <string name="password_toggle_content_description">បង្ហាញពាក្យសម្ងាត់</string>
     <string msgid="6264217191555673260" name="search_menu_title">"ស្វែងរក"</string>
+    <string name="searchview_clear_text_content_description">សម្អាតអក្សរ</string>
+    <string name="searchview_navigation_content_description">ថយក្រោយ</string>
+    <string name="side_sheet_accessibility_pane_title">សន្លឹកចំហៀង</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

@@ -1,59 +1,98 @@
 package com.gulshid.expensetracker.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.gulshid.expensetracker.data.Resource
 import com.gulshid.expensetracker.domain.model.User
 import com.gulshid.expensetracker.domain.repository.AuthRepository
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class AuthRepositoryImpl @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val firestore: FirebaseFirestore   // FIX 2: injected Firestore
 ) : AuthRepository {
 
-    override val currentUser: User?
-        get() = firebaseAuth.currentUser?.let {
-            User(uid = it.uid, email = it.email ?: "")
+    override fun loginWithEmail(email: String, password: String): Flow<Resource<User>> = flow {
+        emit(Resource.Loading)
+        try {
+            val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            val firebaseUser = result.user
+            if (firebaseUser != null) {
+                emit(
+                    Resource.Success(
+                        User(
+                            uid         = firebaseUser.uid,
+                            email       = firebaseUser.email ?: "",
+                            displayName = firebaseUser.displayName ?: ""
+                        )
+                    )
+                )
+            } else {
+                emit(Resource.Error(Exception("Authentication failed: user is null")))
+            }
+        } catch (e: Exception) {
+            emit(Resource.Error(e))
         }
-
-    override fun loginWithEmail(email: String, password: String): Flow<Resource<User>> = callbackFlow {
-        trySend(Resource.Loading)
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener { result ->
-                val firebaseUser = result.user
-                if (firebaseUser != null) {
-                    val user = User(uid = firebaseUser.uid, email = firebaseUser.email ?: "")
-                    trySend(Resource.Success(user))
-                } else {
-                    trySend(Resource.Error(Exception("User is null")))
-                }
-            }
-            .addOnFailureListener { exception ->
-                trySend(Resource.Error(exception))
-            }
-        awaitClose()
     }
 
-    override fun registerWithEmail(email: String, password: String, name: String): Flow<Resource<User>> = callbackFlow {
-        trySend(Resource.Loading)
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-            .addOnSuccessListener { result ->
-                val firebaseUser = result.user
-                if (firebaseUser != null) {
-                    val user = User(uid = firebaseUser.uid, email = firebaseUser.email ?: "", displayName = name)
-                    trySend(Resource.Success(user))
-                } else {
-                    trySend(Resource.Error(Exception("Registration failed")))
-                }
-            }
-            .addOnFailureListener { exception ->
-                trySend(Resource.Error(exception))
-            }
-        awaitClose()
+    override fun registerWithEmail(
+        email: String,
+        password: String,
+        displayName: String
+    ): Flow<Resource<User>> = flow {
+        emit(Resource.Loading)
+        try {
+            // Step 1 — Create Firebase Auth account
+            val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            val firebaseUser = result.user
+                ?: throw Exception("Registration failed: user is null")
+
+            // Step 2 — Update display name on the Firebase Auth profile
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(displayName)
+                .build()
+            firebaseUser.updateProfile(profileUpdates).await()
+
+            // Step 3 — FIX 2: Write user document to Firestore
+            // Path: /users/{uid}
+            val userDocument = mapOf(
+                "uid"         to firebaseUser.uid,
+                "email"       to (firebaseUser.email ?: ""),
+                "displayName" to displayName,
+                "createdAt"   to FieldValue.serverTimestamp()
+            )
+            firestore
+                .collection("users")
+                .document(firebaseUser.uid)
+                .set(userDocument)
+                .await()
+
+            emit(
+                Resource.Success(
+                    User(
+                        uid         = firebaseUser.uid,
+                        email       = firebaseUser.email ?: "",
+                        displayName = displayName
+                    )
+                )
+            )
+        } catch (e: Exception) {
+            emit(Resource.Error(e))
+        }
+    }
+
+    override fun getCurrentUser(): User? {
+        val firebaseUser = firebaseAuth.currentUser ?: return null
+        return User(
+            uid         = firebaseUser.uid,
+            email       = firebaseUser.email ?: "",
+            displayName = firebaseUser.displayName ?: ""
+        )
     }
 
     override fun logout() {

@@ -1,14 +1,15 @@
 package com.gulshid.expensetracker.data.repository;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
+import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
-@ScopeMetadata("javax.inject.Singleton")
+@ScopeMetadata
 @QualifierMetadata
 @DaggerGenerated
 @Generated(
@@ -21,25 +22,32 @@ import javax.inject.Provider;
     "KotlinInternal",
     "KotlinInternalInJava",
     "cast",
-    "deprecation"
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class AuthRepositoryImpl_Factory implements Factory<AuthRepositoryImpl> {
   private final Provider<FirebaseAuth> firebaseAuthProvider;
 
-  public AuthRepositoryImpl_Factory(Provider<FirebaseAuth> firebaseAuthProvider) {
+  private final Provider<FirebaseFirestore> firestoreProvider;
+
+  public AuthRepositoryImpl_Factory(Provider<FirebaseAuth> firebaseAuthProvider,
+      Provider<FirebaseFirestore> firestoreProvider) {
     this.firebaseAuthProvider = firebaseAuthProvider;
+    this.firestoreProvider = firestoreProvider;
   }
 
   @Override
   public AuthRepositoryImpl get() {
-    return newInstance(firebaseAuthProvider.get());
+    return newInstance(firebaseAuthProvider.get(), firestoreProvider.get());
   }
 
-  public static AuthRepositoryImpl_Factory create(Provider<FirebaseAuth> firebaseAuthProvider) {
-    return new AuthRepositoryImpl_Factory(firebaseAuthProvider);
+  public static AuthRepositoryImpl_Factory create(Provider<FirebaseAuth> firebaseAuthProvider,
+      Provider<FirebaseFirestore> firestoreProvider) {
+    return new AuthRepositoryImpl_Factory(firebaseAuthProvider, firestoreProvider);
   }
 
-  public static AuthRepositoryImpl newInstance(FirebaseAuth firebaseAuth) {
-    return new AuthRepositoryImpl(firebaseAuth);
+  public static AuthRepositoryImpl newInstance(FirebaseAuth firebaseAuth,
+      FirebaseFirestore firestore) {
+    return new AuthRepositoryImpl(firebaseAuth, firestore);
   }
 }

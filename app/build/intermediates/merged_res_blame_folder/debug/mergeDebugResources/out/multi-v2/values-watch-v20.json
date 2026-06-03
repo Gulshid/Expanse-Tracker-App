@@ -4,7 +4,7 @@
             "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/b3fdbeedaa464d978cb48eea85f624ab/transformed/appcompat-1.6.1/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/c7c5c45bac931eacddf005ec405647a8/transformed/appcompat-1.7.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/d4263fe632721e7c15955870df161301/transformed/play-services-auth-20.7.0/res/values-watch-v20/values.xml",
+                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/c562f1b1d97661dc310ff479d1c86a8b/transformed/play-services-auth-20.7.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

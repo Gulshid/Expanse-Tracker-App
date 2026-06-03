@@ -8,11 +8,23 @@
         "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_add_expense.xml"
     },
     {
+        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_history.xml",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_history.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/item_expense_card.xml",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/item_expense_card.xml"
+    },
+    {
         "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/activity_main.xml",
         "source": "com.gulshid.expensetracker.app-main-62:/layout/activity_main.xml"
     },
     {
         "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_dashboard.xml",
         "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_register.xml",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_register.xml"
     }
 ]

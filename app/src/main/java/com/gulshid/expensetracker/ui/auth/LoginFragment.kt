@@ -27,24 +27,26 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         _binding = FragmentLoginBinding.bind(view)
 
         setupListeners()
-        observeViewModelState()
+        observeState()
     }
 
     private fun setupListeners() {
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
+            viewModel.loginUser(
+                email = binding.etEmail.text.toString().trim(),
+                password = binding.etPassword.text.toString().trim()
+            )
+        }
 
-            viewModel.loginUser(email, password)
+        binding.tvGoToRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 
-    private fun observeViewModelState() {
+    private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.authState.collect { state ->
-                    handleUiState(state)
-                }
+                viewModel.authState.collect { state -> handleUiState(state) }
             }
         }
     }
@@ -63,13 +65,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
                 viewModel.resetState()
-
                 findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
             }
             is AuthState.Error -> {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
-
                 Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
                 viewModel.resetState()
             }
