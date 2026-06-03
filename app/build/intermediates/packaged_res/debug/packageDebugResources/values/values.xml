@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Expanse Tracker</string>
+    <string name="email_hint">Email Address</string>
+    <string name="gcm_defaultSenderId" translatable="false">468048377756</string>
+    <string name="go_to_register">Don\'t have an account? Sign Up</string>
+    <string name="google_api_key" translatable="false">AIzaSyD1C81s6ZiVjQJCOf05AfSHNuSbS2rvMNE</string>
+    <string name="google_app_id" translatable="false">1:468048377756:android:2494916be887cc485fba59</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD1C81s6ZiVjQJCOf05AfSHNuSbS2rvMNE</string>
+    <string name="google_storage_bucket" translatable="false">expanse-tracker-d85cb.firebasestorage.app</string>
+    <string name="login_btn">Sign In</string>
+    <string name="login_subtitle">Sign in to track your expenses</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="password_hint">Password</string>
+    <string name="project_id" translatable="false">expanse-tracker-d85cb</string>
+    <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.ExpanseTracker" parent="Base.Theme.ExpanseTracker"/>
+</resources>

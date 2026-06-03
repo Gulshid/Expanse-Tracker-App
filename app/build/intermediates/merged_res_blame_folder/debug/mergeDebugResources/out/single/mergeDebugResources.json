@@ -1,0 +1,86 @@
+[
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_fragment_login.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_login.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/navigation_nav_graph.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/xml_backup_rules.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/xml_data_extraction_rules.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_activity_main.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_fragment_dashboard.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_fragment_add_expense.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_add_expense.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/mipmap-mdpi/ic_launcher.webp"
+    }
+]
