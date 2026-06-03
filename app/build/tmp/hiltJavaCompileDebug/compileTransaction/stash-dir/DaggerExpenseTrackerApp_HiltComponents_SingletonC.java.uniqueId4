@@ -8,16 +8,23 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.gulshid.expensetracker.data.repository.AuthRepositoryImpl;
 import com.gulshid.expensetracker.di.AppModule_ProvideFirebaseAuthFactory;
+import com.gulshid.expensetracker.di.AppModule_ProvideFirebaseFirestoreFactory;
 import com.gulshid.expensetracker.domain.repository.AuthRepository;
 import com.gulshid.expensetracker.ui.MainActivity;
+import com.gulshid.expensetracker.ui.MainActivity_MembersInjector;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel;
 import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules;
+import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
+import com.gulshid.expensetracker.ui.auth.AuthViewModel_HiltModules_KeyModule_Provide_LazyMapKey;
 import com.gulshid.expensetracker.ui.auth.LoginFragment;
 import com.gulshid.expensetracker.ui.auth.RegisterFragment;
 import com.gulshid.expensetracker.ui.dashboard.DashboardFragment;
+import com.gulshid.expensetracker.ui.dashboard.DashboardFragment_MembersInjector;
 import com.gulshid.expensetracker.ui.expense.AddExpenseFragment;
 import com.gulshid.expensetracker.ui.history.HistoryFragment;
 import dagger.hilt.android.ActivityRetainedLifecycle;
@@ -36,8 +43,6 @@ import dagger.hilt.android.internal.managers.SavedStateHandleHolder;
 import dagger.hilt.android.internal.modules.ApplicationContextModule;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.DoubleCheck;
-import dagger.internal.IdentifierNameString;
-import dagger.internal.KeepFieldType;
 import dagger.internal.LazyClassKeyMap;
 import dagger.internal.Preconditions;
 import dagger.internal.Provider;
@@ -56,7 +61,8 @@ import javax.annotation.processing.Generated;
     "KotlinInternal",
     "KotlinInternalInJava",
     "cast",
-    "deprecation"
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
   private DaggerExpenseTrackerApp_HiltComponents_SingletonC() {
@@ -296,7 +302,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ViewWithFragmentCImpl viewWithFragmentCImpl = this;
 
-    private ViewWithFragmentCImpl(SingletonCImpl singletonCImpl,
+    ViewWithFragmentCImpl(SingletonCImpl singletonCImpl,
         ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
         FragmentCImpl fragmentCImpl, View viewParam) {
       this.singletonCImpl = singletonCImpl;
@@ -317,9 +323,8 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final FragmentCImpl fragmentCImpl = this;
 
-    private FragmentCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, ActivityCImpl activityCImpl,
-        Fragment fragmentParam) {
+    FragmentCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        ActivityCImpl activityCImpl, Fragment fragmentParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
       this.activityCImpl = activityCImpl;
@@ -337,6 +342,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @Override
     public void injectDashboardFragment(DashboardFragment arg0) {
+      injectDashboardFragment2(arg0);
     }
 
     @Override
@@ -356,6 +362,12 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
     public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
       return new ViewWithFragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl);
     }
+
+    @CanIgnoreReturnValue
+    private DashboardFragment injectDashboardFragment2(DashboardFragment instance) {
+      DashboardFragment_MembersInjector.injectFirebaseAuth(instance, singletonCImpl.provideFirebaseAuthProvider.get());
+      return instance;
+    }
   }
 
   private static final class ViewCImpl extends ExpenseTrackerApp_HiltComponents.ViewC {
@@ -367,7 +379,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ViewCImpl viewCImpl = this;
 
-    private ViewCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+    ViewCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
         ActivityCImpl activityCImpl, View viewParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
@@ -384,8 +396,8 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ActivityCImpl activityCImpl = this;
 
-    private ActivityCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, Activity activityParam) {
+    ActivityCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        Activity activityParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
 
@@ -394,6 +406,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @Override
     public void injectMainActivity(MainActivity arg0) {
+      injectMainActivity2(arg0);
     }
 
     @Override
@@ -403,7 +416,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @Override
     public Map<Class<?>, Boolean> getViewModelKeys() {
-      return LazyClassKeyMap.<Boolean>of(ImmutableMap.<String, Boolean>of(LazyClassKeyProvider.com_gulshid_expensetracker_ui_auth_AuthViewModel, AuthViewModel_HiltModules.KeyModule.provide()));
+      return LazyClassKeyMap.<Boolean>of(ImmutableMap.<String, Boolean>of(AuthViewModel_HiltModules_KeyModule_Provide_LazyMapKey.lazyClassKeyName, AuthViewModel_HiltModules.KeyModule.provide()));
     }
 
     @Override
@@ -421,12 +434,10 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
       return new ViewCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl);
     }
 
-    @IdentifierNameString
-    private static final class LazyClassKeyProvider {
-      static String com_gulshid_expensetracker_ui_auth_AuthViewModel = "com.gulshid.expensetracker.ui.auth.AuthViewModel";
-
-      @KeepFieldType
-      AuthViewModel com_gulshid_expensetracker_ui_auth_AuthViewModel2;
+    @CanIgnoreReturnValue
+    private MainActivity injectMainActivity2(MainActivity instance) {
+      MainActivity_MembersInjector.injectFirebaseAuth(instance, singletonCImpl.provideFirebaseAuthProvider.get());
+      return instance;
     }
   }
 
@@ -437,11 +448,10 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ViewModelCImpl viewModelCImpl = this;
 
-    private Provider<AuthViewModel> authViewModelProvider;
+    Provider<AuthViewModel> authViewModelProvider;
 
-    private ViewModelCImpl(SingletonCImpl singletonCImpl,
-        ActivityRetainedCImpl activityRetainedCImpl, SavedStateHandle savedStateHandleParam,
-        ViewModelLifecycle viewModelLifecycleParam) {
+    ViewModelCImpl(SingletonCImpl singletonCImpl, ActivityRetainedCImpl activityRetainedCImpl,
+        SavedStateHandle savedStateHandleParam, ViewModelLifecycle viewModelLifecycleParam) {
       this.singletonCImpl = singletonCImpl;
       this.activityRetainedCImpl = activityRetainedCImpl;
 
@@ -457,20 +467,12 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @Override
     public Map<Class<?>, javax.inject.Provider<ViewModel>> getHiltViewModelMap() {
-      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(ImmutableMap.<String, javax.inject.Provider<ViewModel>>of(LazyClassKeyProvider.com_gulshid_expensetracker_ui_auth_AuthViewModel, ((Provider) authViewModelProvider)));
+      return LazyClassKeyMap.<javax.inject.Provider<ViewModel>>of(ImmutableMap.<String, javax.inject.Provider<ViewModel>>of(AuthViewModel_HiltModules_BindsModule_Binds_LazyMapKey.lazyClassKeyName, ((Provider) (authViewModelProvider))));
     }
 
     @Override
     public Map<Class<?>, Object> getHiltViewModelAssistedMap() {
       return ImmutableMap.<Class<?>, Object>of();
-    }
-
-    @IdentifierNameString
-    private static final class LazyClassKeyProvider {
-      static String com_gulshid_expensetracker_ui_auth_AuthViewModel = "com.gulshid.expensetracker.ui.auth.AuthViewModel";
-
-      @KeepFieldType
-      AuthViewModel com_gulshid_expensetracker_ui_auth_AuthViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -494,7 +496,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.gulshid.expensetracker.ui.auth.AuthViewModel 
+          case 0: // com.gulshid.expensetracker.ui.auth.AuthViewModel
           return (T) new AuthViewModel(singletonCImpl.bindAuthRepositoryProvider.get());
 
           default: throw new AssertionError(id);
@@ -508,9 +510,9 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ActivityRetainedCImpl activityRetainedCImpl = this;
 
-    private Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider;
+    Provider<ActivityRetainedLifecycle> provideActivityRetainedLifecycleProvider;
 
-    private ActivityRetainedCImpl(SingletonCImpl singletonCImpl,
+    ActivityRetainedCImpl(SingletonCImpl singletonCImpl,
         SavedStateHandleHolder savedStateHandleHolderParam) {
       this.singletonCImpl = singletonCImpl;
 
@@ -551,7 +553,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // dagger.hilt.android.ActivityRetainedLifecycle 
+          case 0: // dagger.hilt.android.ActivityRetainedLifecycle
           return (T) ActivityRetainedComponentManager_LifecycleModule_ProvideActivityRetainedLifecycleFactory.provideActivityRetainedLifecycle();
 
           default: throw new AssertionError(id);
@@ -565,7 +567,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     private final ServiceCImpl serviceCImpl = this;
 
-    private ServiceCImpl(SingletonCImpl singletonCImpl, Service serviceParam) {
+    ServiceCImpl(SingletonCImpl singletonCImpl, Service serviceParam) {
       this.singletonCImpl = singletonCImpl;
 
 
@@ -575,13 +577,15 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
   private static final class SingletonCImpl extends ExpenseTrackerApp_HiltComponents.SingletonC {
     private final SingletonCImpl singletonCImpl = this;
 
-    private Provider<FirebaseAuth> provideFirebaseAuthProvider;
+    Provider<FirebaseAuth> provideFirebaseAuthProvider;
 
-    private Provider<AuthRepositoryImpl> authRepositoryImplProvider;
+    Provider<FirebaseFirestore> provideFirebaseFirestoreProvider;
 
-    private Provider<AuthRepository> bindAuthRepositoryProvider;
+    Provider<AuthRepositoryImpl> authRepositoryImplProvider;
 
-    private SingletonCImpl() {
+    Provider<AuthRepository> bindAuthRepositoryProvider;
+
+    SingletonCImpl() {
 
       initialize();
 
@@ -589,13 +593,14 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize() {
-      this.provideFirebaseAuthProvider = DoubleCheck.provider(new SwitchingProvider<FirebaseAuth>(singletonCImpl, 1));
-      this.authRepositoryImplProvider = new SwitchingProvider<>(singletonCImpl, 0);
-      this.bindAuthRepositoryProvider = DoubleCheck.provider((Provider) authRepositoryImplProvider);
+      this.provideFirebaseAuthProvider = DoubleCheck.provider(new SwitchingProvider<FirebaseAuth>(singletonCImpl, 0));
+      this.provideFirebaseFirestoreProvider = DoubleCheck.provider(new SwitchingProvider<FirebaseFirestore>(singletonCImpl, 2));
+      this.authRepositoryImplProvider = new SwitchingProvider<>(singletonCImpl, 1);
+      this.bindAuthRepositoryProvider = DoubleCheck.provider((Provider) (authRepositoryImplProvider));
     }
 
     @Override
-    public void injectExpenseTrackerApp(ExpenseTrackerApp expenseTrackerApp) {
+    public void injectExpenseTrackerApp(ExpenseTrackerApp arg0) {
     }
 
     @Override
@@ -627,11 +632,14 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.gulshid.expensetracker.data.repository.AuthRepositoryImpl 
-          return (T) new AuthRepositoryImpl(singletonCImpl.provideFirebaseAuthProvider.get());
-
-          case 1: // com.google.firebase.auth.FirebaseAuth 
+          case 0: // com.google.firebase.auth.FirebaseAuth
           return (T) AppModule_ProvideFirebaseAuthFactory.provideFirebaseAuth();
+
+          case 1: // com.gulshid.expensetracker.data.repository.AuthRepositoryImpl
+          return (T) new AuthRepositoryImpl(singletonCImpl.provideFirebaseAuthProvider.get(), singletonCImpl.provideFirebaseFirestoreProvider.get());
+
+          case 2: // com.google.firebase.firestore.FirebaseFirestore
+          return (T) AppModule_ProvideFirebaseFirestoreFactory.provideFirebaseFirestore();
 
           default: throw new AssertionError(id);
         }

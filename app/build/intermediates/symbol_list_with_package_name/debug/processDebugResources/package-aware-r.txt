@@ -4113,12 +4113,15 @@ string common_signin_button_text_long
 string confirm_password_hint
 string copy_toast_msg
 string date_hint
+string delete_expense_hint
 string description_hint
 string dest_title
 string display_name_hint
 string email_hint
 string error_a11y_label
 string error_icon_content_description
+string expense_deleted
+string expense_saved
 string exposed_dropdown_menu_content_description
 string fab_add_expense_desc
 string fab_transformation_scrim_behavior

@@ -4112,12 +4112,15 @@ int string common_signin_button_text_long 0x7f12004d
 int string confirm_password_hint 0x7f12004e
 int string copy_toast_msg 0x7f12004f
 int string date_hint 0x7f120050
+int string delete_expense_hint 0x7f1200f6
 int string description_hint 0x7f120051
 int string dest_title 0x7f120052
 int string display_name_hint 0x7f120053
 int string email_hint 0x7f120054
 int string error_a11y_label 0x7f120055
 int string error_icon_content_description 0x7f120056
+int string expense_deleted 0x7f1200f7
+int string expense_saved 0x7f1200f8
 int string exposed_dropdown_menu_content_description 0x7f120057
 int string fab_add_expense_desc 0x7f120058
 int string fab_transformation_scrim_behavior 0x7f120059

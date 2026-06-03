@@ -59,4 +59,9 @@
     <string name="filter_this_week">This Week</string>
     <string name="filter_this_month">This Month</string>
     <string name="filter_last_3_months">Last 3 Months</string>
+
+    <!-- Expense actions -->
+    <string name="delete_expense_hint">Long press an expense to delete it</string>
+    <string name="expense_deleted">Expense deleted</string>
+    <string name="expense_saved">Expense saved!</string>
 </resources>

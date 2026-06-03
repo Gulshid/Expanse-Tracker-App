@@ -122,9 +122,12 @@ string category_shopping
 string category_transport
 string confirm_password_hint
 string date_hint
+string delete_expense_hint
 string description_hint
 string display_name_hint
 string email_hint
+string expense_deleted
+string expense_saved
 string fab_add_expense_desc
 string filter_all
 string filter_last_3_months
