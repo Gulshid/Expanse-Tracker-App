@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -40,7 +41,13 @@ public final class FragmentHistoryBinding implements ViewBinding {
   public final Chip chipThisWeek;
 
   @NonNull
+  public final View dividerLine;
+
+  @NonNull
   public final HorizontalScrollView hsvFilters;
+
+  @NonNull
+  public final LinearLayout layoutEmptyState;
 
   @NonNull
   public final ProgressBar progressBar;
@@ -56,17 +63,19 @@ public final class FragmentHistoryBinding implements ViewBinding {
 
   private FragmentHistoryBinding(@NonNull ConstraintLayout rootView, @NonNull Chip chipAll,
       @NonNull ChipGroup chipGroupFilter, @NonNull Chip chipLast3Months,
-      @NonNull Chip chipThisMonth, @NonNull Chip chipThisWeek,
-      @NonNull HorizontalScrollView hsvFilters, @NonNull ProgressBar progressBar,
-      @NonNull RecyclerView rvHistory, @NonNull TextView tvEmptyState,
-      @NonNull TextView tvScreenTitle) {
+      @NonNull Chip chipThisMonth, @NonNull Chip chipThisWeek, @NonNull View dividerLine,
+      @NonNull HorizontalScrollView hsvFilters, @NonNull LinearLayout layoutEmptyState,
+      @NonNull ProgressBar progressBar, @NonNull RecyclerView rvHistory,
+      @NonNull TextView tvEmptyState, @NonNull TextView tvScreenTitle) {
     this.rootView = rootView;
     this.chipAll = chipAll;
     this.chipGroupFilter = chipGroupFilter;
     this.chipLast3Months = chipLast3Months;
     this.chipThisMonth = chipThisMonth;
     this.chipThisWeek = chipThisWeek;
+    this.dividerLine = dividerLine;
     this.hsvFilters = hsvFilters;
+    this.layoutEmptyState = layoutEmptyState;
     this.progressBar = progressBar;
     this.rvHistory = rvHistory;
     this.tvEmptyState = tvEmptyState;
@@ -130,9 +139,21 @@ public final class FragmentHistoryBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.dividerLine;
+      View dividerLine = ViewBindings.findChildViewById(rootView, id);
+      if (dividerLine == null) {
+        break missingId;
+      }
+
       id = R.id.hsvFilters;
       HorizontalScrollView hsvFilters = ViewBindings.findChildViewById(rootView, id);
       if (hsvFilters == null) {
+        break missingId;
+      }
+
+      id = R.id.layoutEmptyState;
+      LinearLayout layoutEmptyState = ViewBindings.findChildViewById(rootView, id);
+      if (layoutEmptyState == null) {
         break missingId;
       }
 
@@ -161,8 +182,8 @@ public final class FragmentHistoryBinding implements ViewBinding {
       }
 
       return new FragmentHistoryBinding((ConstraintLayout) rootView, chipAll, chipGroupFilter,
-          chipLast3Months, chipThisMonth, chipThisWeek, hsvFilters, progressBar, rvHistory,
-          tvEmptyState, tvScreenTitle);
+          chipLast3Months, chipThisMonth, chipThisWeek, dividerLine, hsvFilters, layoutEmptyState,
+          progressBar, rvHistory, tvEmptyState, tvScreenTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

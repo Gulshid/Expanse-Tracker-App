@@ -12,6 +12,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,6 +28,18 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
 
   @NonNull
   public final MaterialButton btnSaveExpense;
+
+  @NonNull
+  public final MaterialCardView cardAmountHero;
+
+  @NonNull
+  public final MaterialCardView cardCategory;
+
+  @NonNull
+  public final MaterialCardView cardDetails;
+
+  @NonNull
+  public final MaterialCardView cardPayment;
 
   @NonNull
   public final Chip chipCard;
@@ -83,26 +96,32 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
   public final TextInputLayout tilDescription;
 
   @NonNull
-  public final TextView tvCategoryLabel;
+  public final TextView tvAmountLabel;
 
   @NonNull
-  public final TextView tvPaymentLabel;
+  public final TextView tvCurrencySymbol;
 
   @NonNull
   public final TextView tvScreenTitle;
 
   private FragmentAddExpenseBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull MaterialButton btnSaveExpense, @NonNull Chip chipCard, @NonNull Chip chipCash,
+      @NonNull MaterialButton btnSaveExpense, @NonNull MaterialCardView cardAmountHero,
+      @NonNull MaterialCardView cardCategory, @NonNull MaterialCardView cardDetails,
+      @NonNull MaterialCardView cardPayment, @NonNull Chip chipCard, @NonNull Chip chipCash,
       @NonNull Chip chipEntertainment, @NonNull Chip chipFood, @NonNull ChipGroup chipGroupCategory,
       @NonNull ChipGroup chipGroupPayment, @NonNull Chip chipHealth, @NonNull Chip chipOnline,
       @NonNull Chip chipOther, @NonNull Chip chipShopping, @NonNull Chip chipTransport,
       @NonNull TextInputEditText etAmount, @NonNull TextInputEditText etDate,
       @NonNull TextInputEditText etDescription, @NonNull ProgressBar progressBar,
       @NonNull TextInputLayout tilAmount, @NonNull TextInputLayout tilDate,
-      @NonNull TextInputLayout tilDescription, @NonNull TextView tvCategoryLabel,
-      @NonNull TextView tvPaymentLabel, @NonNull TextView tvScreenTitle) {
+      @NonNull TextInputLayout tilDescription, @NonNull TextView tvAmountLabel,
+      @NonNull TextView tvCurrencySymbol, @NonNull TextView tvScreenTitle) {
     this.rootView = rootView;
     this.btnSaveExpense = btnSaveExpense;
+    this.cardAmountHero = cardAmountHero;
+    this.cardCategory = cardCategory;
+    this.cardDetails = cardDetails;
+    this.cardPayment = cardPayment;
     this.chipCard = chipCard;
     this.chipCash = chipCash;
     this.chipEntertainment = chipEntertainment;
@@ -121,8 +140,8 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
     this.tilAmount = tilAmount;
     this.tilDate = tilDate;
     this.tilDescription = tilDescription;
-    this.tvCategoryLabel = tvCategoryLabel;
-    this.tvPaymentLabel = tvPaymentLabel;
+    this.tvAmountLabel = tvAmountLabel;
+    this.tvCurrencySymbol = tvCurrencySymbol;
     this.tvScreenTitle = tvScreenTitle;
   }
 
@@ -156,6 +175,30 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
       id = R.id.btnSaveExpense;
       MaterialButton btnSaveExpense = ViewBindings.findChildViewById(rootView, id);
       if (btnSaveExpense == null) {
+        break missingId;
+      }
+
+      id = R.id.cardAmountHero;
+      MaterialCardView cardAmountHero = ViewBindings.findChildViewById(rootView, id);
+      if (cardAmountHero == null) {
+        break missingId;
+      }
+
+      id = R.id.cardCategory;
+      MaterialCardView cardCategory = ViewBindings.findChildViewById(rootView, id);
+      if (cardCategory == null) {
+        break missingId;
+      }
+
+      id = R.id.cardDetails;
+      MaterialCardView cardDetails = ViewBindings.findChildViewById(rootView, id);
+      if (cardDetails == null) {
+        break missingId;
+      }
+
+      id = R.id.cardPayment;
+      MaterialCardView cardPayment = ViewBindings.findChildViewById(rootView, id);
+      if (cardPayment == null) {
         break missingId;
       }
 
@@ -267,15 +310,15 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvCategoryLabel;
-      TextView tvCategoryLabel = ViewBindings.findChildViewById(rootView, id);
-      if (tvCategoryLabel == null) {
+      id = R.id.tvAmountLabel;
+      TextView tvAmountLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvAmountLabel == null) {
         break missingId;
       }
 
-      id = R.id.tvPaymentLabel;
-      TextView tvPaymentLabel = ViewBindings.findChildViewById(rootView, id);
-      if (tvPaymentLabel == null) {
+      id = R.id.tvCurrencySymbol;
+      TextView tvCurrencySymbol = ViewBindings.findChildViewById(rootView, id);
+      if (tvCurrencySymbol == null) {
         break missingId;
       }
 
@@ -285,11 +328,11 @@ public final class FragmentAddExpenseBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAddExpenseBinding((CoordinatorLayout) rootView, btnSaveExpense, chipCard,
-          chipCash, chipEntertainment, chipFood, chipGroupCategory, chipGroupPayment, chipHealth,
-          chipOnline, chipOther, chipShopping, chipTransport, etAmount, etDate, etDescription,
-          progressBar, tilAmount, tilDate, tilDescription, tvCategoryLabel, tvPaymentLabel,
-          tvScreenTitle);
+      return new FragmentAddExpenseBinding((CoordinatorLayout) rootView, btnSaveExpense,
+          cardAmountHero, cardCategory, cardDetails, cardPayment, chipCard, chipCash,
+          chipEntertainment, chipFood, chipGroupCategory, chipGroupPayment, chipHealth, chipOnline,
+          chipOther, chipShopping, chipTransport, etAmount, etDate, etDescription, progressBar,
+          tilAmount, tilDate, tilDescription, tvAmountLabel, tvCurrencySymbol, tvScreenTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

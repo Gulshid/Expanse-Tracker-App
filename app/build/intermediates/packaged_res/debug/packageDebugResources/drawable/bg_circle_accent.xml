@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bg_circle_accent.xml — translucent circle -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <stroke android:color="#F5C842" android:width="2dp" />
+    <solid android:color="#00000000" />
+</shape>

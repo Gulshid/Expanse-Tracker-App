@@ -25,6 +25,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
+  public final MaterialCardView cardEmptyState;
+
+  @NonNull
+  public final MaterialCardView cardMiniStat;
+
+  @NonNull
   public final MaterialCardView cardSummary;
 
   @NonNull
@@ -64,16 +70,23 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextView tvTotalLabel;
 
   @NonNull
+  public final TextView tvTransactionCount;
+
+  @NonNull
   public final TextView tvUserName;
 
   private FragmentDashboardBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialCardView cardEmptyState, @NonNull MaterialCardView cardMiniStat,
       @NonNull MaterialCardView cardSummary, @NonNull ChipGroup chipGroupCategories,
       @NonNull FloatingActionButton fabAddExpense, @NonNull HorizontalScrollView hsvCategories,
       @NonNull RecyclerView rvRecentExpenses, @NonNull TextView tvCategoryTitle,
       @NonNull TextView tvEmptyState, @NonNull TextView tvGreeting, @NonNull TextView tvRecentTitle,
       @NonNull TextView tvSeeAll, @NonNull TextView tvThisMonth, @NonNull TextView tvTotalAmount,
-      @NonNull TextView tvTotalLabel, @NonNull TextView tvUserName) {
+      @NonNull TextView tvTotalLabel, @NonNull TextView tvTransactionCount,
+      @NonNull TextView tvUserName) {
     this.rootView = rootView;
+    this.cardEmptyState = cardEmptyState;
+    this.cardMiniStat = cardMiniStat;
     this.cardSummary = cardSummary;
     this.chipGroupCategories = chipGroupCategories;
     this.fabAddExpense = fabAddExpense;
@@ -87,6 +100,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
     this.tvThisMonth = tvThisMonth;
     this.tvTotalAmount = tvTotalAmount;
     this.tvTotalLabel = tvTotalLabel;
+    this.tvTransactionCount = tvTransactionCount;
     this.tvUserName = tvUserName;
   }
 
@@ -117,6 +131,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cardEmptyState;
+      MaterialCardView cardEmptyState = ViewBindings.findChildViewById(rootView, id);
+      if (cardEmptyState == null) {
+        break missingId;
+      }
+
+      id = R.id.cardMiniStat;
+      MaterialCardView cardMiniStat = ViewBindings.findChildViewById(rootView, id);
+      if (cardMiniStat == null) {
+        break missingId;
+      }
+
       id = R.id.cardSummary;
       MaterialCardView cardSummary = ViewBindings.findChildViewById(rootView, id);
       if (cardSummary == null) {
@@ -195,16 +221,22 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvTransactionCount;
+      TextView tvTransactionCount = ViewBindings.findChildViewById(rootView, id);
+      if (tvTransactionCount == null) {
+        break missingId;
+      }
+
       id = R.id.tvUserName;
       TextView tvUserName = ViewBindings.findChildViewById(rootView, id);
       if (tvUserName == null) {
         break missingId;
       }
 
-      return new FragmentDashboardBinding((CoordinatorLayout) rootView, cardSummary,
-          chipGroupCategories, fabAddExpense, hsvCategories, rvRecentExpenses, tvCategoryTitle,
-          tvEmptyState, tvGreeting, tvRecentTitle, tvSeeAll, tvThisMonth, tvTotalAmount,
-          tvTotalLabel, tvUserName);
+      return new FragmentDashboardBinding((CoordinatorLayout) rootView, cardEmptyState,
+          cardMiniStat, cardSummary, chipGroupCategories, fabAddExpense, hsvCategories,
+          rvRecentExpenses, tvCategoryTitle, tvEmptyState, tvGreeting, tvRecentTitle, tvSeeAll,
+          tvThisMonth, tvTotalAmount, tvTotalLabel, tvTransactionCount, tvUserName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

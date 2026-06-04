@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bg_glow_gold.xml — radial gold glow -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:startColor="#F5C842"
+        android:endColor="#00F5C842"
+        android:gradientRadius="50%"
+        android:type="radial" />
+</shape>

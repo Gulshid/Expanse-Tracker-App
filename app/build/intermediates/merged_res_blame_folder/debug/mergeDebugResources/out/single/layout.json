@@ -4,12 +4,16 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/fragment_login.xml"
     },
     {
+        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_login.xml",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_login.xml"
+    },
+    {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_dashboard.xml",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/fragment_dashboard.xml"
     },
     {
-        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_analytics.xml",
-        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_analytics.xml"
+        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_analytics.xml",
+        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/fragment_analytics.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_register.xml",
@@ -20,8 +24,8 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/activity_main.xml"
     },
     {
-        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/item_category_row.xml",
-        "source": "com.gulshid.expensetracker.app-main-62:/layout/item_category_row.xml"
+        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/item_category_row.xml",
+        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/item_category_row.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_add_expense.xml",
@@ -34,5 +38,9 @@
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/item_expense_card.xml",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout/item_expense_card.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-mergeDebugResources-59:/layout/fragment_register.xml",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_register.xml"
     }
 ]

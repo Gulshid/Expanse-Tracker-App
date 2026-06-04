@@ -1,175 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  fragment_analytics.xml — Premium Analytics
+  Design: Full-bleed pie chart card, total summary strip,
+          rich category breakdown rows with colored progress bars.
+-->
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
-    android:fillViewport="true">
+    android:background="@color/bg_app"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/spacing_xxl">
 
-        <TextView
-            android:id="@+id/tvAnalyticsTitle"
-            android:layout_width="0dp"
+        <!-- ══════════════════════════════════════
+             Header row: title + total
+        ══════════════════════════════════════ -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_xl"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            android:text="@string/analytics_title"
-            android:textAppearance="?attr/textAppearanceHeadlineMedium"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingStart="@dimen/page_margin"
+            android:paddingEnd="@dimen/page_margin"
+            android:paddingTop="@dimen/spacing_xl">
 
-        <TextView
-            android:id="@+id/tvTotalAnalytics"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tvAnalyticsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/analytics_title"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="@color/text_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cardTotalBadge" />
+
+            <!-- Total badge top-right -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTotalBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/card_stroke"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/spacing_md"
+                    android:paddingEnd="@dimen/spacing_md"
+                    android:paddingTop="@dimen/spacing_sm"
+                    android:paddingBottom="@dimen/spacing_sm">
+
+                    <TextView
+                        android:id="@+id/tvTotalAnalytics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:textColor="@color/gold"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ══════════════════════════════════════
+             Pie Chart card
+        ══════════════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardChart"
+            style="@style/CardStyle.Dark"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            android:text="Total: $0.00"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAnalyticsTitle" />
+            android:layout_marginStart="@dimen/page_margin"
+            android:layout_marginEnd="@dimen/page_margin"
+            android:layout_marginTop="@dimen/spacing_lg">
 
-        <!-- MPAndroidChart Pie Chart -->
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pieChart"
-            android:layout_width="0dp"
-            android:layout_height="280dp"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_lg"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTotalAnalytics" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_lg">
 
-        <TextView
-            android:id="@+id/tvEmptyChart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_xxl"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            android:gravity="center"
-            android:text="@string/no_data_for_chart"
-            android:textAppearance="?attr/textAppearanceBodyLarge"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTotalAnalytics" />
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="0dp"
+                    android:layout_height="260dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTotalAnalytics" />
+                <!-- Empty chart state -->
+                <LinearLayout
+                    android:id="@+id/layoutEmptyChart"
+                    android:layout_width="0dp"
+                    android:layout_height="260dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Category breakdown section title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📊"
+                        android:textSize="44sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tvEmptyChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:gravity="center"
+                        android:text="@string/no_data_for_chart"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/gold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════════════
+             Breakdown section title
+        ══════════════════════════════════════ -->
         <TextView
             android:id="@+id/tvBreakdownTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
+            android:layout_marginStart="@dimen/page_margin"
+            android:layout_marginEnd="@dimen/page_margin"
             android:layout_marginTop="@dimen/spacing_xl"
-            android:layout_marginEnd="@dimen/spacing_lg"
             android:text="@string/breakdown_by_category"
             android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pieChart" />
+            android:textColor="@color/text_primary" />
 
-        <!-- Food row -->
-        <include
-            android:id="@+id/rowFood"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
+        <!-- ══════════════════════════════════════
+             Breakdown card (all categories inside one card)
+        ══════════════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBreakdown"
+            style="@style/CardStyle.Dark"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBreakdownTitle" />
+            android:layout_marginStart="@dimen/page_margin"
+            android:layout_marginEnd="@dimen/page_margin"
+            android:layout_marginTop="@dimen/spacing_md">
 
-        <!-- Transport row -->
-        <include
-            android:id="@+id/rowTransport"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rowFood" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/spacing_lg"
+                android:paddingEnd="@dimen/spacing_lg"
+                android:paddingTop="@dimen/spacing_md"
+                android:paddingBottom="@dimen/spacing_md">
 
-        <!-- Shopping row -->
-        <include
-            android:id="@+id/rowShopping"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rowTransport" />
+                <include
+                    android:id="@+id/rowFood"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        <!-- Health row -->
-        <include
-            android:id="@+id/rowHealth"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rowShopping" />
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/card_stroke" android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
 
-        <!-- Entertainment row -->
-        <include
-            android:id="@+id/rowEntertainment"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rowHealth" />
+                <include
+                    android:id="@+id/rowTransport"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        <!-- Other row -->
-        <include
-            android:id="@+id/rowOther"
-            layout="@layout/item_category_row"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_lg"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginEnd="@dimen/spacing_lg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rowEntertainment" />
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/card_stroke" android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <include
+                    android:id="@+id/rowShopping"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/card_stroke" android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
+
+                <include
+                    android:id="@+id/rowHealth"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/card_stroke" android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
+
+                <include
+                    android:id="@+id/rowEntertainment"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/card_stroke" android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp" />
+
+                <include
+                    android:id="@+id/rowOther"
+                    layout="@layout/item_category_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

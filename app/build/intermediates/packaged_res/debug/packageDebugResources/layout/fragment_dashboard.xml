@@ -1,69 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  fragment_dashboard.xml — Premium Dashboard
+  Design: Full-bleed hero balance card with gradient,
+          animated quick-stat chips, expense list with
+          rich category badges.
+-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface">
+    android:background="@color/bg_app"
+    android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/spacing_xxl">
 
-            <!-- ── Header greeting ── -->
-            <TextView
-                android:id="@+id/tvGreeting"
-                android:layout_width="0dp"
+            <!-- ══════════════════════════════════════
+                 SECTION 1: Header
+            ══════════════════════════════════════ -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginTop="@dimen/spacing_xl"
-                android:layout_marginEnd="@dimen/spacing_lg"
-                android:text="@string/greeting_default"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:paddingStart="@dimen/page_margin"
+                android:paddingEnd="@dimen/page_margin"
+                android:paddingTop="@dimen/spacing_xl"
+                android:paddingBottom="@dimen/spacing_md">
 
-            <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginEnd="@dimen/spacing_lg"
-                android:text="@string/user_name_placeholder"
-                android:textAppearance="?attr/textAppearanceHeadlineMedium"
-                android:textColor="?attr/colorOnSurface"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
+                <!-- Greeting text -->
+                <TextView
+                    android:id="@+id/tvGreeting"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greeting_default"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="@color/text_secondary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/fabAddExpense" />
 
-            <!-- ── Total balance summary card ── -->
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="@string/user_name_placeholder"
+                    android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                    android:textColor="@color/text_primary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvGreeting"
+                    app:layout_constraintEnd_toStartOf="@id/fabAddExpense" />
+
+                <!-- FAB — top right -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabAddExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/fab_add_expense_desc"
+                    app:srcCompat="@drawable/ic_nav_add"
+                    app:backgroundTint="@color/gold"
+                    app:tint="@color/on_gold"
+                    app:fabSize="normal"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ══════════════════════════════════════
+                 SECTION 2: Hero Balance Card
+                 Full-width, tall, gradient background
+            ══════════════════════════════════════ -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSummary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginTop="@dimen/spacing_lg"
-                android:layout_marginEnd="@dimen/spacing_lg"
-                app:cardBackgroundColor="?attr/colorPrimary"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUserName">
+                style="@style/CardStyle.Hero"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hero_card_height"
+                android:layout_marginStart="@dimen/page_margin"
+                android:layout_marginEnd="@dimen/page_margin"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <!-- Gradient background -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_hero_gradient" />
+
+                <!-- Decorative circle top-right -->
+                <View
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="-60dp"
+                    android:layout_marginEnd="-60dp"
+                    android:background="@drawable/bg_circle_accent"
+                    android:alpha="0.12" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_lg">
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/spacing_xl">
 
                     <TextView
                         android:id="@+id/tvTotalLabel"
@@ -71,22 +116,25 @@
                         android:layout_height="wrap_content"
                         android:text="@string/total_spent_label"
                         android:textAppearance="?attr/textAppearanceLabelLarge"
-                        android:textColor="?attr/colorOnPrimary"
-                        android:alpha="0.8"
+                        android:textColor="@color/text_secondary"
+                        android:letterSpacing="0.06"
+                        android:textAllCaps="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvTotalAmount"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:layout_marginTop="@dimen/spacing_xs"
                         android:text="@string/amount_placeholder"
-                        android:textAppearance="?attr/textAppearanceDisplaySmall"
-                        android:textColor="?attr/colorOnPrimary"
+                        android:textColor="@color/text_primary"
+                        android:textSize="42sp"
                         android:textStyle="bold"
+                        android:letterSpacing="-0.02"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvTotalLabel" />
+                        app:layout_constraintTop_toBottomOf="@id/tvTotalLabel"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <TextView
                         android:id="@+id/tvThisMonth"
@@ -95,124 +143,175 @@
                         android:layout_marginTop="@dimen/spacing_xs"
                         android:text="@string/this_month_label"
                         android:textAppearance="?attr/textAppearanceBodySmall"
-                        android:textColor="?attr/colorOnPrimary"
-                        android:alpha="0.7"
+                        android:textColor="@color/text_secondary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvTotalAmount" />
 
-                    <!-- FAB shortcut to add expense -->
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fabAddExpense"
+                    <!-- Mini stat: transaction count -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardMiniStat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:contentDescription="@string/fab_add_expense_desc"
-                        app:srcCompat="@drawable/ic_nav_add"
-                        app:backgroundTint="?attr/colorOnPrimary"
-                        app:tint="?attr/colorPrimary"
-                        app:fabSize="mini"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:cardBackgroundColor="#22FFFFFF"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/spacing_md"
+                            android:paddingEnd="@dimen/spacing_md"
+                            android:paddingTop="@dimen/spacing_sm"
+                            android:paddingBottom="@dimen/spacing_sm">
+
+                            <TextView
+                                android:id="@+id/tvTransactionCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Transactions"
+                                android:textAppearance="?attr/textAppearanceLabelSmall"
+                                android:textColor="@color/text_secondary"
+                                android:gravity="center" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ── Category quick-stats row ── -->
+            <!-- ══════════════════════════════════════
+                 SECTION 3: Category quick-filter chips
+            ══════════════════════════════════════ -->
             <TextView
                 android:id="@+id/tvCategoryTitle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
+                android:layout_marginStart="@dimen/page_margin"
                 android:layout_marginTop="@dimen/spacing_xl"
-                android:layout_marginEnd="@dimen/spacing_lg"
                 android:text="@string/categories_label"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardSummary" />
+                android:textColor="@color/text_primary" />
 
             <HorizontalScrollView
                 android:id="@+id/hsvCategories"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_sm"
                 android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCategoryTitle">
+                android:clipToPadding="false">
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chipGroupCategories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/spacing_lg"
-                    android:paddingEnd="@dimen/spacing_lg"
+                    android:paddingStart="@dimen/page_margin"
+                    android:paddingEnd="@dimen/page_margin"
                     app:singleSelection="true"
                     app:selectionRequired="true">
-
-                    <!-- Chips are added programmatically in DashboardFragment -->
+                    <!-- Chips added programmatically -->
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <!-- ── Recent expenses header ── -->
-            <TextView
-                android:id="@+id/tvRecentTitle"
-                android:layout_width="wrap_content"
+            <!-- ══════════════════════════════════════
+                 SECTION 4: Recent Expenses header
+            ══════════════════════════════════════ -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginTop="@dimen/spacing_xl"
-                android:text="@string/recent_expenses_label"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hsvCategories" />
+                android:paddingStart="@dimen/page_margin"
+                android:paddingEnd="@dimen/page_margin"
+                android:paddingTop="@dimen/spacing_xl"
+                android:paddingBottom="@dimen/spacing_sm">
 
-            <TextView
-                android:id="@+id/tvSeeAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spacing_lg"
-                android:text="@string/see_all_label"
-                android:textAppearance="?attr/textAppearanceLabelLarge"
-                android:textColor="?attr/colorPrimary"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvRecentTitle"
-                app:layout_constraintEnd_toEndOf="parent" />
+                <TextView
+                    android:id="@+id/tvRecentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recent_expenses_label"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="@color/text_primary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
-            <!-- Recent expenses RecyclerView (non-scrolling, nested inside NestedScrollView) -->
+                <TextView
+                    android:id="@+id/tvSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_all_label"
+                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                    android:textColor="@color/gold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ══════════════════════════════════════
+                 SECTION 5: Expense list / empty state
+            ══════════════════════════════════════ -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRecentExpenses"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginTop="@dimen/spacing_sm"
-                android:layout_marginEnd="@dimen/spacing_lg"
+                android:layout_marginStart="@dimen/page_margin"
+                android:layout_marginEnd="@dimen/page_margin"
                 android:nestedScrollingEnabled="false"
-                android:clipToPadding="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvRecentTitle" />
+                android:clipToPadding="false" />
 
-            <!-- Empty state -->
-            <TextView
-                android:id="@+id/tvEmptyState"
-                android:layout_width="0dp"
+            <!-- Empty state card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEmptyState"
+                style="@style/CardStyle.Dark"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_lg"
-                android:layout_marginTop="@dimen/spacing_lg"
-                android:layout_marginEnd="@dimen/spacing_lg"
-                android:gravity="center"
-                android:text="@string/no_expenses_yet"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvRecentTitle" />
+                android:layout_marginStart="@dimen/page_margin"
+                android:layout_marginEnd="@dimen/page_margin"
+                android:visibility="gone">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="@dimen/spacing_xxl">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💸"
+                        android:textSize="40sp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tvEmptyState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:gravity="center"
+                        android:text="@string/no_expenses_yet"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

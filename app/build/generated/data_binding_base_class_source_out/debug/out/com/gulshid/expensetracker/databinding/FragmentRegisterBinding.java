@@ -8,10 +8,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.gulshid.expensetracker.R;
@@ -21,10 +22,13 @@ import java.lang.String;
 
 public final class FragmentRegisterBinding implements ViewBinding {
   @NonNull
-  private final NestedScrollView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
   public final MaterialButton btnRegister;
+
+  @NonNull
+  public final MaterialCardView cardInputs;
 
   @NonNull
   public final TextInputEditText etConfirmPassword;
@@ -54,6 +58,9 @@ public final class FragmentRegisterBinding implements ViewBinding {
   public final TextInputLayout tilPassword;
 
   @NonNull
+  public final TextView tvBrandIcon;
+
+  @NonNull
   public final TextView tvGoToLogin;
 
   @NonNull
@@ -62,15 +69,17 @@ public final class FragmentRegisterBinding implements ViewBinding {
   @NonNull
   public final TextView tvTitle;
 
-  private FragmentRegisterBinding(@NonNull NestedScrollView rootView,
-      @NonNull MaterialButton btnRegister, @NonNull TextInputEditText etConfirmPassword,
-      @NonNull TextInputEditText etDisplayName, @NonNull TextInputEditText etEmail,
-      @NonNull TextInputEditText etPassword, @NonNull ProgressBar progressBar,
-      @NonNull TextInputLayout tilConfirmPassword, @NonNull TextInputLayout tilDisplayName,
-      @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilPassword,
+  private FragmentRegisterBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialButton btnRegister, @NonNull MaterialCardView cardInputs,
+      @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etDisplayName,
+      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etPassword,
+      @NonNull ProgressBar progressBar, @NonNull TextInputLayout tilConfirmPassword,
+      @NonNull TextInputLayout tilDisplayName, @NonNull TextInputLayout tilEmail,
+      @NonNull TextInputLayout tilPassword, @NonNull TextView tvBrandIcon,
       @NonNull TextView tvGoToLogin, @NonNull TextView tvSubtitle, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnRegister = btnRegister;
+    this.cardInputs = cardInputs;
     this.etConfirmPassword = etConfirmPassword;
     this.etDisplayName = etDisplayName;
     this.etEmail = etEmail;
@@ -80,6 +89,7 @@ public final class FragmentRegisterBinding implements ViewBinding {
     this.tilDisplayName = tilDisplayName;
     this.tilEmail = tilEmail;
     this.tilPassword = tilPassword;
+    this.tvBrandIcon = tvBrandIcon;
     this.tvGoToLogin = tvGoToLogin;
     this.tvSubtitle = tvSubtitle;
     this.tvTitle = tvTitle;
@@ -87,7 +97,7 @@ public final class FragmentRegisterBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public NestedScrollView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -115,6 +125,12 @@ public final class FragmentRegisterBinding implements ViewBinding {
       id = R.id.btnRegister;
       MaterialButton btnRegister = ViewBindings.findChildViewById(rootView, id);
       if (btnRegister == null) {
+        break missingId;
+      }
+
+      id = R.id.cardInputs;
+      MaterialCardView cardInputs = ViewBindings.findChildViewById(rootView, id);
+      if (cardInputs == null) {
         break missingId;
       }
 
@@ -172,6 +188,12 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvBrandIcon;
+      TextView tvBrandIcon = ViewBindings.findChildViewById(rootView, id);
+      if (tvBrandIcon == null) {
+        break missingId;
+      }
+
       id = R.id.tvGoToLogin;
       TextView tvGoToLogin = ViewBindings.findChildViewById(rootView, id);
       if (tvGoToLogin == null) {
@@ -190,9 +212,9 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentRegisterBinding((NestedScrollView) rootView, btnRegister,
+      return new FragmentRegisterBinding((CoordinatorLayout) rootView, btnRegister, cardInputs,
           etConfirmPassword, etDisplayName, etEmail, etPassword, progressBar, tilConfirmPassword,
-          tilDisplayName, tilEmail, tilPassword, tvGoToLogin, tvSubtitle, tvTitle);
+          tilDisplayName, tilEmail, tilPassword, tvBrandIcon, tvGoToLogin, tvSubtitle, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

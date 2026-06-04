@@ -7,16 +7,27 @@
     <dimen name="spacing_lg">16dp</dimen>
     <dimen name="spacing_xl">24dp</dimen>
     <dimen name="spacing_xxl">48dp</dimen>
+    <dimen name="spacing_3xl">64dp</dimen>
 
     <!-- Cards -->
-    <dimen name="card_corner_radius">16dp</dimen>
-    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="card_corner_radius_large">28dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
 
     <!-- Buttons -->
     <dimen name="button_height">56dp</dimen>
-    <dimen name="button_corner_radius">12dp</dimen>
+    <dimen name="button_corner_radius">16dp</dimen>
 
-    <!-- Icon badge in expense card -->
+    <!-- Icon badges -->
     <dimen name="icon_badge_size">48dp</dimen>
-    <dimen name="icon_badge_corner">12dp</dimen>
+    <dimen name="icon_badge_corner">14dp</dimen>
+
+    <!-- Hero card -->
+    <dimen name="hero_card_height">200dp</dimen>
+
+    <!-- Bottom nav height -->
+    <dimen name="bottom_nav_height">64dp</dimen>
+
+    <!-- Page horizontal margin -->
+    <dimen name="page_margin">20dp</dimen>
 </resources>

@@ -4,6 +4,7 @@ package com.gulshid.expensetracker.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.github.mikephil.charting.charts.PieChart;
+import com.google.android.material.card.MaterialCardView;
 import com.gulshid.expensetracker.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -20,6 +22,18 @@ import java.lang.String;
 public final class FragmentAnalyticsBinding implements ViewBinding {
   @NonNull
   private final NestedScrollView rootView;
+
+  @NonNull
+  public final MaterialCardView cardBreakdown;
+
+  @NonNull
+  public final MaterialCardView cardChart;
+
+  @NonNull
+  public final MaterialCardView cardTotalBadge;
+
+  @NonNull
+  public final LinearLayout layoutEmptyChart;
 
   @NonNull
   public final PieChart pieChart;
@@ -57,14 +71,20 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
   @NonNull
   public final TextView tvTotalAnalytics;
 
-  private FragmentAnalyticsBinding(@NonNull NestedScrollView rootView, @NonNull PieChart pieChart,
-      @NonNull ProgressBar progressBar, @NonNull ItemCategoryRowBinding rowEntertainment,
-      @NonNull ItemCategoryRowBinding rowFood, @NonNull ItemCategoryRowBinding rowHealth,
-      @NonNull ItemCategoryRowBinding rowOther, @NonNull ItemCategoryRowBinding rowShopping,
-      @NonNull ItemCategoryRowBinding rowTransport, @NonNull TextView tvAnalyticsTitle,
-      @NonNull TextView tvBreakdownTitle, @NonNull TextView tvEmptyChart,
-      @NonNull TextView tvTotalAnalytics) {
+  private FragmentAnalyticsBinding(@NonNull NestedScrollView rootView,
+      @NonNull MaterialCardView cardBreakdown, @NonNull MaterialCardView cardChart,
+      @NonNull MaterialCardView cardTotalBadge, @NonNull LinearLayout layoutEmptyChart,
+      @NonNull PieChart pieChart, @NonNull ProgressBar progressBar,
+      @NonNull ItemCategoryRowBinding rowEntertainment, @NonNull ItemCategoryRowBinding rowFood,
+      @NonNull ItemCategoryRowBinding rowHealth, @NonNull ItemCategoryRowBinding rowOther,
+      @NonNull ItemCategoryRowBinding rowShopping, @NonNull ItemCategoryRowBinding rowTransport,
+      @NonNull TextView tvAnalyticsTitle, @NonNull TextView tvBreakdownTitle,
+      @NonNull TextView tvEmptyChart, @NonNull TextView tvTotalAnalytics) {
     this.rootView = rootView;
+    this.cardBreakdown = cardBreakdown;
+    this.cardChart = cardChart;
+    this.cardTotalBadge = cardTotalBadge;
+    this.layoutEmptyChart = layoutEmptyChart;
     this.pieChart = pieChart;
     this.progressBar = progressBar;
     this.rowEntertainment = rowEntertainment;
@@ -106,6 +126,30 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cardBreakdown;
+      MaterialCardView cardBreakdown = ViewBindings.findChildViewById(rootView, id);
+      if (cardBreakdown == null) {
+        break missingId;
+      }
+
+      id = R.id.cardChart;
+      MaterialCardView cardChart = ViewBindings.findChildViewById(rootView, id);
+      if (cardChart == null) {
+        break missingId;
+      }
+
+      id = R.id.cardTotalBadge;
+      MaterialCardView cardTotalBadge = ViewBindings.findChildViewById(rootView, id);
+      if (cardTotalBadge == null) {
+        break missingId;
+      }
+
+      id = R.id.layoutEmptyChart;
+      LinearLayout layoutEmptyChart = ViewBindings.findChildViewById(rootView, id);
+      if (layoutEmptyChart == null) {
+        break missingId;
+      }
+
       id = R.id.pieChart;
       PieChart pieChart = ViewBindings.findChildViewById(rootView, id);
       if (pieChart == null) {
@@ -184,10 +228,10 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAnalyticsBinding((NestedScrollView) rootView, pieChart, progressBar,
-          binding_rowEntertainment, binding_rowFood, binding_rowHealth, binding_rowOther,
-          binding_rowShopping, binding_rowTransport, tvAnalyticsTitle, tvBreakdownTitle,
-          tvEmptyChart, tvTotalAnalytics);
+      return new FragmentAnalyticsBinding((NestedScrollView) rootView, cardBreakdown, cardChart,
+          cardTotalBadge, layoutEmptyChart, pieChart, progressBar, binding_rowEntertainment,
+          binding_rowFood, binding_rowHealth, binding_rowOther, binding_rowShopping,
+          binding_rowTransport, tvAnalyticsTitle, tvBreakdownTitle, tvEmptyChart, tvTotalAnalytics);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

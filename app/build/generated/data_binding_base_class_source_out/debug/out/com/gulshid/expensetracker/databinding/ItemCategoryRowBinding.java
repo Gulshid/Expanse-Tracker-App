@@ -32,14 +32,19 @@ public final class ItemCategoryRowBinding implements ViewBinding {
   @NonNull
   public final TextView tvCategoryPercent;
 
+  @NonNull
+  public final View viewDot;
+
   private ItemCategoryRowBinding(@NonNull ConstraintLayout rootView,
       @NonNull ProgressBar progressCategory, @NonNull TextView tvCategoryAmount,
-      @NonNull TextView tvCategoryName, @NonNull TextView tvCategoryPercent) {
+      @NonNull TextView tvCategoryName, @NonNull TextView tvCategoryPercent,
+      @NonNull View viewDot) {
     this.rootView = rootView;
     this.progressCategory = progressCategory;
     this.tvCategoryAmount = tvCategoryAmount;
     this.tvCategoryName = tvCategoryName;
     this.tvCategoryPercent = tvCategoryPercent;
+    this.viewDot = viewDot;
   }
 
   @Override
@@ -93,8 +98,14 @@ public final class ItemCategoryRowBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.viewDot;
+      View viewDot = ViewBindings.findChildViewById(rootView, id);
+      if (viewDot == null) {
+        break missingId;
+      }
+
       return new ItemCategoryRowBinding((ConstraintLayout) rootView, progressCategory,
-          tvCategoryAmount, tvCategoryName, tvCategoryPercent);
+          tvCategoryAmount, tvCategoryName, tvCategoryPercent, viewDot);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

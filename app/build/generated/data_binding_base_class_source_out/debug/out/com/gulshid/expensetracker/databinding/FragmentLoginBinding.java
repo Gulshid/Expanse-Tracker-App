@@ -4,14 +4,16 @@ package com.gulshid.expensetracker.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.gulshid.expensetracker.R;
@@ -21,10 +23,16 @@ import java.lang.String;
 
 public final class FragmentLoginBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
   public final MaterialButton btnLogin;
+
+  @NonNull
+  public final MaterialCardView cardInputs;
+
+  @NonNull
+  public final LinearLayout dividerRow;
 
   @NonNull
   public final TextInputEditText etEmail;
@@ -42,6 +50,9 @@ public final class FragmentLoginBinding implements ViewBinding {
   public final TextInputLayout tilPassword;
 
   @NonNull
+  public final TextView tvBrandIcon;
+
+  @NonNull
   public final TextView tvGoToRegister;
 
   @NonNull
@@ -50,18 +61,23 @@ public final class FragmentLoginBinding implements ViewBinding {
   @NonNull
   public final TextView tvTitle;
 
-  private FragmentLoginBinding(@NonNull ConstraintLayout rootView, @NonNull MaterialButton btnLogin,
-      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etPassword,
-      @NonNull ProgressBar progressBar, @NonNull TextInputLayout tilEmail,
-      @NonNull TextInputLayout tilPassword, @NonNull TextView tvGoToRegister,
-      @NonNull TextView tvSubtitle, @NonNull TextView tvTitle) {
+  private FragmentLoginBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialButton btnLogin, @NonNull MaterialCardView cardInputs,
+      @NonNull LinearLayout dividerRow, @NonNull TextInputEditText etEmail,
+      @NonNull TextInputEditText etPassword, @NonNull ProgressBar progressBar,
+      @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilPassword,
+      @NonNull TextView tvBrandIcon, @NonNull TextView tvGoToRegister, @NonNull TextView tvSubtitle,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnLogin = btnLogin;
+    this.cardInputs = cardInputs;
+    this.dividerRow = dividerRow;
     this.etEmail = etEmail;
     this.etPassword = etPassword;
     this.progressBar = progressBar;
     this.tilEmail = tilEmail;
     this.tilPassword = tilPassword;
+    this.tvBrandIcon = tvBrandIcon;
     this.tvGoToRegister = tvGoToRegister;
     this.tvSubtitle = tvSubtitle;
     this.tvTitle = tvTitle;
@@ -69,7 +85,7 @@ public final class FragmentLoginBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -97,6 +113,18 @@ public final class FragmentLoginBinding implements ViewBinding {
       id = R.id.btnLogin;
       MaterialButton btnLogin = ViewBindings.findChildViewById(rootView, id);
       if (btnLogin == null) {
+        break missingId;
+      }
+
+      id = R.id.cardInputs;
+      MaterialCardView cardInputs = ViewBindings.findChildViewById(rootView, id);
+      if (cardInputs == null) {
+        break missingId;
+      }
+
+      id = R.id.dividerRow;
+      LinearLayout dividerRow = ViewBindings.findChildViewById(rootView, id);
+      if (dividerRow == null) {
         break missingId;
       }
 
@@ -130,6 +158,12 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvBrandIcon;
+      TextView tvBrandIcon = ViewBindings.findChildViewById(rootView, id);
+      if (tvBrandIcon == null) {
+        break missingId;
+      }
+
       id = R.id.tvGoToRegister;
       TextView tvGoToRegister = ViewBindings.findChildViewById(rootView, id);
       if (tvGoToRegister == null) {
@@ -148,8 +182,9 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentLoginBinding((ConstraintLayout) rootView, btnLogin, etEmail, etPassword,
-          progressBar, tilEmail, tilPassword, tvGoToRegister, tvSubtitle, tvTitle);
+      return new FragmentLoginBinding((CoordinatorLayout) rootView, btnLogin, cardInputs,
+          dividerRow, etEmail, etPassword, progressBar, tilEmail, tilPassword, tvBrandIcon,
+          tvGoToRegister, tvSubtitle, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
