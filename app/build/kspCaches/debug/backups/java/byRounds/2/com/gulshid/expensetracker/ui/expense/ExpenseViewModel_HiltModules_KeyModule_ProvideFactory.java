@@ -18,9 +18,7 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast",
-    "deprecation",
-    "nullness:initialization.field.uninitialized"
+    "cast"
 })
 public final class ExpenseViewModel_HiltModules_KeyModule_ProvideFactory implements Factory<Boolean> {
   @Override
@@ -37,6 +35,6 @@ public final class ExpenseViewModel_HiltModules_KeyModule_ProvideFactory impleme
   }
 
   private static final class InstanceHolder {
-    static final ExpenseViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE = new ExpenseViewModel_HiltModules_KeyModule_ProvideFactory();
+    private static final ExpenseViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE = new ExpenseViewModel_HiltModules_KeyModule_ProvideFactory();
   }
 }

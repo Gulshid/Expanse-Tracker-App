@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.Dark.NoActionBar">
+    <!--
+        res/values/themes.xml — LIGHT theme.
+    -->
 
-        <item name="colorPrimary">#F5C842</item>
-        <item name="colorOnPrimary">#1A1200</item>
-        <item name="colorPrimaryContainer">#3D2E00</item>
-        <item name="colorOnPrimaryContainer">#FFE57D</item>
+    <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.Light.NoActionBar">
 
-        <item name="colorSecondary">#B8BFCE</item>
-        <item name="colorOnSecondary">#22262E</item>
-        <item name="colorSecondaryContainer">#2E3340</item>
-        <item name="colorOnSecondaryContainer">#D4D9E6</item>
+        <item name="colorPrimary">#C49A00</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#FFE57D</item>
+        <item name="colorOnPrimaryContainer">#1A1200</item>
 
-        <item name="colorTertiary">#4DD0C8</item>
-        <item name="colorOnTertiary">#00201F</item>
-        <item name="colorTertiaryContainer">#1A3A38</item>
-        <item name="colorOnTertiaryContainer">#A0F0EA</item>
+        <item name="colorSecondary">#4A5268</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#DDE1EE</item>
+        <item name="colorOnSecondaryContainer">#1A1E2A</item>
 
-        <item name="colorError">#FF6B6B</item>
-        <item name="colorOnError">#200000</item>
-        <item name="colorErrorContainer">#3D0000</item>
-        <item name="colorOnErrorContainer">#FFBDBA</item>
+        <item name="colorTertiary">#00796B</item>
+        <item name="colorOnTertiary">#FFFFFF</item>
+        <item name="colorTertiaryContainer">#B2DFDB</item>
+        <item name="colorOnTertiaryContainer">#00201F</item>
 
-        <item name="colorSurface">#0E1117</item>
-        <item name="colorOnSurface">#E8ECEF</item>
-        <item name="colorSurfaceVariant">#1C2130</item>
-        <item name="colorOnSurfaceVariant">#8B94A8</item>
-        <item name="colorSurfaceContainerLowest">#090C12</item>
-        <item name="colorSurfaceContainerLow">#111520</item>
-        <item name="colorSurfaceContainer">#161B28</item>
-        <item name="colorSurfaceContainerHigh">#1D2335</item>
-        <item name="colorSurfaceContainerHighest">#232A3E</item>
+        <item name="colorError">#D32F2F</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorErrorContainer">#FFCDD2</item>
+        <item name="colorOnErrorContainer">#410002</item>
 
-        <item name="colorOutline">#3A4259</item>
-        <item name="colorOutlineVariant">#252D42</item>
+        <item name="colorSurface">#F5F7FA</item>
+        <item name="colorOnSurface">#1A1A2E</item>
+        <item name="colorSurfaceVariant">#E8ECF4</item>
+        <item name="colorOnSurfaceVariant">#4A5268</item>
+        <item name="colorSurfaceContainerLowest">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F0F2F8</item>
+        <item name="colorSurfaceContainer">#E8ECF4</item>
+        <item name="colorSurfaceContainerHigh">#DDE1EE</item>
+        <item name="colorSurfaceContainerHighest">#D2D7E8</item>
 
-        <item name="android:windowBackground">@color/bg_app</item>
+        <item name="colorOutline">#8B94A8</item>
+        <item name="colorOutlineVariant">#C8CDD9</item>
+
+        <item name="android:windowBackground">#F5F7FA</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/bg_nav</item>
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeSmall</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeMedium</item>
@@ -69,27 +73,27 @@
     </style>
 
     <style name="BottomNavStyle" parent="Widget.Material3.BottomNavigationView">
-        <item name="android:background">@color/bg_nav</item>
+        <item name="android:background">#FFFFFF</item>
         <item name="itemTextColor">@color/nav_item_color</item>
         <item name="itemIconTint">@color/nav_item_color</item>
         <item name="android:elevation">0dp</item>
     </style>
 
     <style name="InputFieldStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxBackgroundColor">@color/input_bg</item>
+        <item name="boxBackgroundColor">#FFFFFF</item>
         <item name="boxStrokeColor">@color/input_stroke</item>
         <item name="boxStrokeWidth">1.5dp</item>
         <item name="boxCornerRadiusTopStart">14dp</item>
         <item name="boxCornerRadiusTopEnd">14dp</item>
         <item name="boxCornerRadiusBottomStart">14dp</item>
         <item name="boxCornerRadiusBottomEnd">14dp</item>
-        <item name="hintTextColor">@color/hint_color</item>
-        <item name="android:textColorHint">@color/hint_color</item>
+        <item name="hintTextColor">#8B94A8</item>
+        <item name="android:textColorHint">#8B94A8</item>
     </style>
 
     <style name="PrimaryButtonStyle" parent="Widget.Material3.Button">
-        <item name="android:backgroundTint">@color/gold</item>
-        <item name="android:textColor">@color/on_gold</item>
+        <item name="android:backgroundTint">#C49A00</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="cornerRadius">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:elevation">0dp</item>
@@ -97,15 +101,15 @@
     </style>
 
     <style name="CardStyle.Dark" parent="Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardBackgroundColor">#FFFFFF</item>
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">0dp</item>
         <item name="strokeWidth">1dp</item>
-        <item name="strokeColor">@color/card_stroke</item>
+        <item name="strokeColor">#DDE1EE</item>
     </style>
 
     <style name="CardStyle.Hero" parent="Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">@color/card_hero_bg</item>
+        <item name="cardBackgroundColor">#1D2335</item>
         <item name="cardCornerRadius">28dp</item>
         <item name="cardElevation">0dp</item>
         <item name="strokeWidth">0dp</item>
@@ -118,6 +122,28 @@
         <item name="chipStrokeWidth">1dp</item>
         <item name="chipCornerRadius">12dp</item>
         <item name="checkedIconVisible">false</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">#C49A00</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonNegativeStyle</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#C49A00</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogButtonNegativeStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#4A5268</item>
+    </style>
+
+    <!-- ✅ FIX: DeleteDialogStyle used by the delete confirmation dialog -->
+    <style name="DeleteDialogStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">#CC3333</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.6</item>
     </style>
 
 </resources>

@@ -4,9 +4,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import dagger.MembersInjector;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.InjectedFieldSignature;
-import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import javax.annotation.processing.Generated;
+import javax.inject.Provider;
 
 @QualifierMetadata
 @DaggerGenerated
@@ -19,9 +19,7 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast",
-    "deprecation",
-    "nullness:initialization.field.uninitialized"
+    "cast"
 })
 public final class DashboardFragment_MembersInjector implements MembersInjector<DashboardFragment> {
   private final Provider<FirebaseAuth> firebaseAuthProvider;

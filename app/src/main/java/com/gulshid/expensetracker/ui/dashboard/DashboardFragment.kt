@@ -1,7 +1,11 @@
 package com.gulshid.expensetracker.ui.dashboard
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -9,12 +13,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.FragmentDashboardBinding
 import com.gulshid.expensetracker.domain.model.Expense
 import com.gulshid.expensetracker.ui.expense.ExpenseListState
+import com.gulshid.expensetracker.ui.expense.ExpenseState
 import com.gulshid.expensetracker.ui.expense.ExpenseViewModel
 import com.gulshid.expensetracker.ui.history.ExpenseAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +49,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         setupRecyclerView()
         setupListeners()
         observeExpenses()
+        observeActionState()
     }
 
     private fun setupGreeting() {
@@ -75,11 +83,40 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     }
 
     private fun setupRecyclerView() {
-        expenseAdapter = ExpenseAdapter(onDeleteClick = { viewModel.deleteExpense(it.id) })
+        expenseAdapter = ExpenseAdapter(onDeleteClick = { expense ->
+            showDeleteDialog(expense)
+        })
         binding.rvRecentExpenses.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = expenseAdapter
         }
+    }
+
+    private fun showDeleteDialog(expense: Expense) {
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.dialog_delete_expense, null)
+
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DeleteDialogStyle)
+            .setView(dialogView)
+            .create()
+
+        // Populate expense details
+        val name = expense.description.ifBlank { expense.category }
+        dialogView.findViewById<TextView>(R.id.tvExpenseName).text = name
+        dialogView.findViewById<TextView>(R.id.tvExpenseCategory).text = expense.category
+        dialogView.findViewById<TextView>(R.id.tvExpenseAmount).text =
+            "-${"$"}${"%.2f".format(expense.amount)}"
+
+        dialogView.findViewById<MaterialButton>(R.id.btnCancel).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<MaterialButton>(R.id.btnDelete).setOnClickListener {
+            viewModel.deleteExpense(expense.id)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setupListeners() {
@@ -100,13 +137,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                             is ExpenseListState.Loading -> Unit
                             is ExpenseListState.Success -> render(state.expenses)
                             is ExpenseListState.Error   -> {
-                                binding.tvEmptyState.visibility = View.VISIBLE
-                                binding.tvEmptyState.text = state.message
+                                binding.cardEmptyState.visibility   = View.VISIBLE
+                                binding.rvRecentExpenses.visibility = View.GONE
                             }
                         }
                     }
                 }
-                // Re-render when category filter changes
                 launch {
                     viewModel.activeCategoryFilter.collect {
                         val state = viewModel.expenseListState.value
@@ -117,17 +153,39 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
     }
 
+    private fun observeActionState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.actionState.collect { state ->
+                    when (state) {
+                        is ExpenseState.DeleteSuccess -> {
+                            Toast.makeText(requireContext(), "Expense deleted", Toast.LENGTH_SHORT).show()
+                            viewModel.resetActionState()
+                        }
+                        is ExpenseState.Error -> {
+                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
+                            viewModel.resetActionState()
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
+    }
+
     private fun render(all: List<Expense>) {
         val filtered = viewModel.categoryFilteredExpenses(all)
         val total    = filtered.sumOf { it.amount }
-        binding.tvTotalAmount.text = "$${"%.2f".format(total)}"
+
+        binding.tvTotalAmount.text      = "${"$"}${"%.2f".format(total)}"
+        binding.tvTransactionCount.text = filtered.size.toString()
 
         val recent = filtered.take(5)
         if (recent.isEmpty()) {
-            binding.tvEmptyState.visibility    = View.VISIBLE
+            binding.cardEmptyState.visibility   = View.VISIBLE
             binding.rvRecentExpenses.visibility = View.GONE
         } else {
-            binding.tvEmptyState.visibility    = View.GONE
+            binding.cardEmptyState.visibility   = View.GONE
             binding.rvRecentExpenses.visibility = View.VISIBLE
             expenseAdapter.submitList(recent)
         }

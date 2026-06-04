@@ -8,10 +8,6 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/layout-w600dp/activity_main.xml"
     },
     {
-        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_fragment_register.xml.flat",
-        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_register.xml"
-    },
-    {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -44,12 +40,12 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/navigation/nav_graph.xml"
     },
     {
-        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_nav_add.xml.flat",
-        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_nav_add.xml"
+        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_dialog_delete_expense.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/layout/dialog_delete_expense.xml"
     },
     {
-        "merged": "com.gulshid.expensetracker.app-debug-60:/layout_fragment_login.xml.flat",
-        "source": "com.gulshid.expensetracker.app-main-62:/layout/fragment_login.xml"
+        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_nav_add.xml.flat",
+        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_nav_add.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/color_chip_text.xml.flat",
@@ -76,12 +72,20 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/bg_glow_gold.xml"
     },
     {
+        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_lock.xml.flat",
+        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_lock.xml"
+    },
+    {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_launcher_background.xml.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_lock.xml.flat",
-        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_lock.xml"
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_bg_delete_glow.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/bg_delete_glow.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_bg_delete_icon.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/bg_delete_icon.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/mipmap-hdpi_ic_launcher.webp.flat",
@@ -104,12 +108,12 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_calendar.xml"
     },
     {
-        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/xml_backup_rules.xml.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/layout_fragment_add_expense.xml.flat",
@@ -126,6 +130,10 @@
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_nav_dashboard.xml.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_nav_dashboard.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_bg_delete_detail_card.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/bg_delete_detail_card.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/layout_fragment_history.xml.flat",
@@ -156,16 +164,16 @@
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/bg_hero_gradient.xml"
     },
     {
-        "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/font_nunito.xml.flat",
-        "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/font/nunito.xml"
-    },
-    {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_email.xml.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_email.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_nav_analytics.xml.flat",
         "source": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-main-62:/drawable/ic_nav_analytics.xml"
+    },
+    {
+        "merged": "com.gulshid.expensetracker.app-debug-60:/drawable_ic_delete_dialog.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-62:/drawable/ic_delete_dialog.xml"
     },
     {
         "merged": "/Users/mac/.gradle/daemon/8.11.1/com.gulshid.expensetracker.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",

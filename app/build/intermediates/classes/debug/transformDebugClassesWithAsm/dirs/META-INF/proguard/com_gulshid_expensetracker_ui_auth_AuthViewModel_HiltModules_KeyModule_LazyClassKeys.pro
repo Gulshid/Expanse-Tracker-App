@@ -1,1 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.gulshid.expensetracker.ui.auth.AuthViewModel

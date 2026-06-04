@@ -6,10 +6,10 @@ import com.gulshid.expensetracker.domain.usecase.DeleteExpenseUseCase;
 import com.gulshid.expensetracker.domain.usecase.GetExpensesUseCase;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
-import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
+import javax.inject.Provider;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -23,9 +23,7 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast",
-    "deprecation",
-    "nullness:initialization.field.uninitialized"
+    "cast"
 })
 public final class ExpenseViewModel_Factory implements Factory<ExpenseViewModel> {
   private final Provider<GetExpensesUseCase> getExpensesUseCaseProvider;

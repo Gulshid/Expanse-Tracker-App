@@ -4,7 +4,7 @@
             "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/1cc6c1741f8b0474b598cc373a46ae0d/transformed/material-1.12.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "/Users/mac/.gradle/caches/8.11.1/transforms/13e9daeabd2cb0833955bbd209a2920c/transformed/material-1.12.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

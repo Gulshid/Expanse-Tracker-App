@@ -1,8 +1,10 @@
 package com.gulshid.expensetracker.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
@@ -28,6 +30,15 @@ class MainActivity : AppCompatActivity() {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // ✅ FIX: Apply saved theme preference BEFORE setContentView
+        // so the correct theme is applied on Activity recreation after toggle.
+        val prefs = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+        val isDark = prefs.getBoolean("dark_mode", true)
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        )
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

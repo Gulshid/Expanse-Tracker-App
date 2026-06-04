@@ -3127,6 +3127,9 @@ drawable avd_show_password
 drawable bg_brand_icon
 drawable bg_category_dot
 drawable bg_circle_accent
+drawable bg_delete_detail_card
+drawable bg_delete_glow
+drawable bg_delete_icon
 drawable bg_glow_gold
 drawable bg_hero_gradient
 drawable bg_payment_badge
@@ -3174,6 +3177,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_delete_dialog
 drawable ic_email
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -3388,6 +3392,8 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnCancel
+id btnDelete
 id btnLogin
 id btnRegister
 id btnSaveExpense
@@ -3574,6 +3580,7 @@ id labeled
 id layout
 id layoutEmptyChart
 id layoutEmptyState
+id layoutExpenseDetail
 id left
 id leftToRight
 id legacy
@@ -3864,8 +3871,13 @@ id tvCategoryPercent
 id tvCategoryTitle
 id tvCurrencySymbol
 id tvDescription
+id tvDialogMessage
+id tvDialogTitle
 id tvEmptyChart
 id tvEmptyState
+id tvExpenseAmount
+id tvExpenseCategory
+id tvExpenseName
 id tvGoToLogin
 id tvGoToRegister
 id tvGreeting
@@ -4043,6 +4055,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_delete_expense
 layout fragment_add_expense
 layout fragment_analytics
 layout fragment_dashboard
@@ -4374,6 +4387,7 @@ string total_spent_label
 string user_name_placeholder
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
+style AlertDialogTheme
 style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
@@ -4667,6 +4681,9 @@ style CardView
 style CardView_Dark
 style CardView_Light
 style ChipStyle_Filter
+style DeleteDialogStyle
+style DialogButtonNegativeStyle
+style DialogButtonStyle
 style InputFieldStyle
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation

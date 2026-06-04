@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--
+        res/values-night/themes.xml — DARK theme.
+    -->
+
     <style name="Base.Theme.ExpanseTracker" parent="Theme.Material3.Dark.NoActionBar">
 
         <item name="colorPrimary">#F5C842</item>
@@ -118,6 +122,28 @@
         <item name="chipStrokeWidth">1dp</item>
         <item name="chipCornerRadius">12dp</item>
         <item name="checkedIconVisible">false</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">#F5C842</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonNegativeStyle</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#F5C842</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogButtonNegativeStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">#8B94A8</item>
+    </style>
+
+    <!-- ✅ FIX: DeleteDialogStyle used by the delete confirmation dialog (dark variant) -->
+    <style name="DeleteDialogStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">#FF6B6B</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.7</item>
     </style>
 
 </resources>

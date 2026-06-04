@@ -3,10 +3,10 @@ package com.gulshid.expensetracker.domain.usecase;
 import com.gulshid.expensetracker.domain.repository.ExpenseRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
-import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
+import javax.inject.Provider;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -20,9 +20,7 @@ import javax.annotation.processing.Generated;
     "rawtypes",
     "KotlinInternal",
     "KotlinInternalInJava",
-    "cast",
-    "deprecation",
-    "nullness:initialization.field.uninitialized"
+    "cast"
 })
 public final class DeleteExpenseUseCase_Factory implements Factory<DeleteExpenseUseCase> {
   private final Provider<ExpenseRepository> expenseRepositoryProvider;

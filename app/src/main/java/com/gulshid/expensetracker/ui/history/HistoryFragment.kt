@@ -1,20 +1,18 @@
 package com.gulshid.expensetracker.ui.history
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.FragmentHistoryBinding
 import com.gulshid.expensetracker.domain.model.Expense
@@ -40,51 +38,46 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         _binding = FragmentHistoryBinding.bind(view)
 
         setupRecyclerView()
-        setupSwipeToDelete()
         setupFilterChips()
         observeExpenses()
         observeActionState()
     }
 
     private fun setupRecyclerView() {
-        expenseAdapter = ExpenseAdapter(onDeleteClick = { viewModel.deleteExpense(it.id) })
+        expenseAdapter = ExpenseAdapter(onDeleteClick = { expense ->
+            showDeleteDialog(expense)
+        })
         binding.rvHistory.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = expenseAdapter
         }
     }
 
-    // Swipe left to delete
-    private fun setupSwipeToDelete() {
-        val swipeCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            private val background = ColorDrawable(Color.parseColor("#FFE5E5"))
-            private val paint = Paint().apply { color = Color.parseColor("#D32F2F"); textSize = 40f; isAntiAlias = true }
+    private fun showDeleteDialog(expense: Expense) {
+        val dialogView = LayoutInflater.from(requireContext())
+            .inflate(R.layout.dialog_delete_expense, null)
 
-            override fun onMove(rv: RecyclerView, vh: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DeleteDialogStyle)
+            .setView(dialogView)
+            .create()
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val expense = expenseAdapter.getItemAt(viewHolder.adapterPosition)
-                viewModel.deleteExpense(expense.id)
-            }
+        // Populate expense details
+        val name = expense.description.ifBlank { expense.category }
+        dialogView.findViewById<TextView>(R.id.tvExpenseName).text = name
+        dialogView.findViewById<TextView>(R.id.tvExpenseCategory).text = expense.category
+        dialogView.findViewById<TextView>(R.id.tvExpenseAmount).text =
+            "-${"$"}${"%.2f".format(expense.amount)}"
 
-            override fun onChildDraw(
-                c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
-                dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
-            ) {
-                val itemView = viewHolder.itemView
-                background.setBounds(
-                    itemView.right + dX.toInt(), itemView.top,
-                    itemView.right, itemView.bottom
-                )
-                background.draw(c)
-                val deleteText = "🗑️ Delete"
-                val textX = itemView.right - 220f
-                val textY = itemView.top + (itemView.height / 2f) + 15f
-                c.drawText(deleteText, textX, textY, paint)
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-            }
+        dialogView.findViewById<MaterialButton>(R.id.btnCancel).setOnClickListener {
+            dialog.dismiss()
         }
-        ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.rvHistory)
+
+        dialogView.findViewById<MaterialButton>(R.id.btnDelete).setOnClickListener {
+            viewModel.deleteExpense(expense.id)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setupFilterChips() {
@@ -106,8 +99,9 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
                 viewModel.expenseListState.collect { state ->
                     when (state) {
                         is ExpenseListState.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                            binding.tvEmptyState.visibility = View.GONE
+                            binding.progressBar.visibility      = View.VISIBLE
+                            binding.layoutEmptyState.visibility = View.GONE
+                            binding.rvHistory.visibility        = View.GONE
                         }
                         is ExpenseListState.Success -> {
                             binding.progressBar.visibility = View.GONE
@@ -115,9 +109,9 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
                             showList(viewModel.filteredExpenses(allExpenses))
                         }
                         is ExpenseListState.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.tvEmptyState.visibility = View.VISIBLE
-                            binding.tvEmptyState.text = state.message
+                            binding.progressBar.visibility      = View.GONE
+                            binding.layoutEmptyState.visibility = View.VISIBLE
+                            binding.rvHistory.visibility        = View.GONE
                         }
                     }
                 }
@@ -147,11 +141,11 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
     private fun showList(expenses: List<Expense>) {
         if (expenses.isEmpty()) {
-            binding.tvEmptyState.visibility = View.VISIBLE
-            binding.rvHistory.visibility    = View.GONE
+            binding.layoutEmptyState.visibility = View.VISIBLE
+            binding.rvHistory.visibility        = View.GONE
         } else {
-            binding.tvEmptyState.visibility = View.GONE
-            binding.rvHistory.visibility    = View.VISIBLE
+            binding.layoutEmptyState.visibility = View.GONE
+            binding.rvHistory.visibility        = View.VISIBLE
             expenseAdapter.submitList(expenses)
         }
     }

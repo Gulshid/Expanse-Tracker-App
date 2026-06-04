@@ -2,9 +2,11 @@ package com.gulshid.expensetracker.ui.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.ItemExpenseCardBinding
 import com.gulshid.expensetracker.domain.model.Expense
 import java.text.SimpleDateFormat
@@ -27,7 +29,6 @@ class ExpenseAdapter(
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    // Expose for ItemTouchHelper swipe
     fun getItemAt(position: Int): Expense = getItem(position)
 
     inner class ExpenseViewHolder(
@@ -35,15 +36,22 @@ class ExpenseAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(expense: Expense) {
-            binding.tvDescription.text   = expense.description.ifBlank { expense.category }
-            binding.tvAmount.text        = "-${"%.2f".format(expense.amount)}"
+            binding.tvDescription.text    = expense.description.ifBlank { expense.category }
+            binding.tvAmount.text         = "-${"%.2f".format(expense.amount)}"
             binding.tvCategoryAndDate.text = "${expense.category} · ${formatDate(expense.timestamp)}"
-            binding.tvCategoryEmoji.text = categoryEmoji(expense.category)
-            binding.tvPaymentMethod.text = expense.paymentMethod
+            binding.tvCategoryEmoji.text  = categoryEmoji(expense.category)
+            binding.tvPaymentMethod.text  = expense.paymentMethod
 
-            // Long-press triggers delete
+            // Long-press → show confirmation dialog before deleting
             binding.root.setOnLongClickListener {
-                onDeleteClick(expense)
+                AlertDialog.Builder(binding.root.context, R.style.AlertDialogTheme)
+                    .setTitle("Delete Expense")
+                    .setMessage("Are you sure you want to delete \"${expense.description.ifBlank { expense.category }}\"?")
+                    .setPositiveButton("Delete") { _, _ ->
+                        onDeleteClick(expense)
+                    }
+                    .setNegativeButton("Cancel", null)
+                    .show()
                 true
             }
         }
