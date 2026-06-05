@@ -454,15 +454,15 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_gulshid_expensetracker_ui_expense_ExpenseViewModel = "com.gulshid.expensetracker.ui.expense.ExpenseViewModel";
-
       static String com_gulshid_expensetracker_ui_auth_AuthViewModel = "com.gulshid.expensetracker.ui.auth.AuthViewModel";
 
-      @KeepFieldType
-      ExpenseViewModel com_gulshid_expensetracker_ui_expense_ExpenseViewModel2;
+      static String com_gulshid_expensetracker_ui_expense_ExpenseViewModel = "com.gulshid.expensetracker.ui.expense.ExpenseViewModel";
 
       @KeepFieldType
       AuthViewModel com_gulshid_expensetracker_ui_auth_AuthViewModel2;
+
+      @KeepFieldType
+      ExpenseViewModel com_gulshid_expensetracker_ui_expense_ExpenseViewModel2;
     }
   }
 
@@ -518,15 +518,15 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String com_gulshid_expensetracker_ui_expense_ExpenseViewModel = "com.gulshid.expensetracker.ui.expense.ExpenseViewModel";
-
       static String com_gulshid_expensetracker_ui_auth_AuthViewModel = "com.gulshid.expensetracker.ui.auth.AuthViewModel";
 
-      @KeepFieldType
-      ExpenseViewModel com_gulshid_expensetracker_ui_expense_ExpenseViewModel2;
+      static String com_gulshid_expensetracker_ui_expense_ExpenseViewModel = "com.gulshid.expensetracker.ui.expense.ExpenseViewModel";
 
       @KeepFieldType
       AuthViewModel com_gulshid_expensetracker_ui_auth_AuthViewModel2;
+
+      @KeepFieldType
+      ExpenseViewModel com_gulshid_expensetracker_ui_expense_ExpenseViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -663,7 +663,7 @@ public final class DaggerExpenseTrackerApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectExpenseTrackerApp(ExpenseTrackerApp expenseTrackerApp) {
+    public void injectExpenseTrackerApp(ExpenseTrackerApp arg0) {
     }
 
     @Override

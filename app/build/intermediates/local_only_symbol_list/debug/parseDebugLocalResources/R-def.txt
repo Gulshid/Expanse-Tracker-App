@@ -74,6 +74,7 @@ drawable ic_email
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_lock
+drawable ic_logout
 drawable ic_nav_add
 drawable ic_nav_analytics
 drawable ic_nav_dashboard
@@ -91,6 +92,7 @@ id bottomNavigationView
 id btnCancel
 id btnDelete
 id btnLogin
+id btnLogout
 id btnRegister
 id btnSaveExpense
 id cardAmountHero

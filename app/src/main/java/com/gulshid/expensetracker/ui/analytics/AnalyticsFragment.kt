@@ -8,10 +8,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.google.firebase.auth.FirebaseAuth
 import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.FragmentAnalyticsBinding
 import com.gulshid.expensetracker.domain.model.Expense
@@ -31,6 +34,14 @@ class AnalyticsFragment : Fragment(R.layout.fragment_analytics) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAnalyticsBinding.bind(view)
+
+        binding.btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val options = NavOptions.Builder()
+                .setPopUpTo(R.id.nav_graph, true)
+                .build()
+            findNavController().navigate(R.id.loginFragment, null, options)
+        }
 
         setupPieChart()
         observeExpenses()

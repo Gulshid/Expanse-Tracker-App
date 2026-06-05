@@ -124,6 +124,10 @@
         "source": "com.gulshid.expensetracker.app-main-63:/color/chip_stroke.xml"
     },
     {
+        "merged": "com.gulshid.expensetracker.app-debug-61:/drawable_ic_logout.xml.flat",
+        "source": "com.gulshid.expensetracker.app-main-63:/drawable/ic_logout.xml"
+    },
+    {
         "merged": "com.gulshid.expensetracker.app-debug-61:/drawable_bg_delete_detail_card.xml.flat",
         "source": "com.gulshid.expensetracker.app-main-63:/drawable/bg_delete_detail_card.xml"
     },

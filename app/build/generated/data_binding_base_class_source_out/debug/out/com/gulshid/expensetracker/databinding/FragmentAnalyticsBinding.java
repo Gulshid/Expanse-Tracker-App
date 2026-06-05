@@ -13,6 +13,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.github.mikephil.charting.charts.PieChart;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.gulshid.expensetracker.R;
 import java.lang.NullPointerException;
@@ -22,6 +23,9 @@ import java.lang.String;
 public final class FragmentAnalyticsBinding implements ViewBinding {
   @NonNull
   private final NestedScrollView rootView;
+
+  @NonNull
+  public final MaterialButton btnLogout;
 
   @NonNull
   public final MaterialCardView cardBreakdown;
@@ -72,15 +76,17 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
   public final TextView tvTotalAnalytics;
 
   private FragmentAnalyticsBinding(@NonNull NestedScrollView rootView,
-      @NonNull MaterialCardView cardBreakdown, @NonNull MaterialCardView cardChart,
-      @NonNull MaterialCardView cardTotalBadge, @NonNull LinearLayout layoutEmptyChart,
-      @NonNull PieChart pieChart, @NonNull ProgressBar progressBar,
-      @NonNull ItemCategoryRowBinding rowEntertainment, @NonNull ItemCategoryRowBinding rowFood,
-      @NonNull ItemCategoryRowBinding rowHealth, @NonNull ItemCategoryRowBinding rowOther,
-      @NonNull ItemCategoryRowBinding rowShopping, @NonNull ItemCategoryRowBinding rowTransport,
-      @NonNull TextView tvAnalyticsTitle, @NonNull TextView tvBreakdownTitle,
-      @NonNull TextView tvEmptyChart, @NonNull TextView tvTotalAnalytics) {
+      @NonNull MaterialButton btnLogout, @NonNull MaterialCardView cardBreakdown,
+      @NonNull MaterialCardView cardChart, @NonNull MaterialCardView cardTotalBadge,
+      @NonNull LinearLayout layoutEmptyChart, @NonNull PieChart pieChart,
+      @NonNull ProgressBar progressBar, @NonNull ItemCategoryRowBinding rowEntertainment,
+      @NonNull ItemCategoryRowBinding rowFood, @NonNull ItemCategoryRowBinding rowHealth,
+      @NonNull ItemCategoryRowBinding rowOther, @NonNull ItemCategoryRowBinding rowShopping,
+      @NonNull ItemCategoryRowBinding rowTransport, @NonNull TextView tvAnalyticsTitle,
+      @NonNull TextView tvBreakdownTitle, @NonNull TextView tvEmptyChart,
+      @NonNull TextView tvTotalAnalytics) {
     this.rootView = rootView;
+    this.btnLogout = btnLogout;
     this.cardBreakdown = cardBreakdown;
     this.cardChart = cardChart;
     this.cardTotalBadge = cardTotalBadge;
@@ -126,6 +132,12 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnLogout;
+      MaterialButton btnLogout = ViewBindings.findChildViewById(rootView, id);
+      if (btnLogout == null) {
+        break missingId;
+      }
+
       id = R.id.cardBreakdown;
       MaterialCardView cardBreakdown = ViewBindings.findChildViewById(rootView, id);
       if (cardBreakdown == null) {
@@ -228,10 +240,11 @@ public final class FragmentAnalyticsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAnalyticsBinding((NestedScrollView) rootView, cardBreakdown, cardChart,
-          cardTotalBadge, layoutEmptyChart, pieChart, progressBar, binding_rowEntertainment,
-          binding_rowFood, binding_rowHealth, binding_rowOther, binding_rowShopping,
-          binding_rowTransport, tvAnalyticsTitle, tvBreakdownTitle, tvEmptyChart, tvTotalAnalytics);
+      return new FragmentAnalyticsBinding((NestedScrollView) rootView, btnLogout, cardBreakdown,
+          cardChart, cardTotalBadge, layoutEmptyChart, pieChart, progressBar,
+          binding_rowEntertainment, binding_rowFood, binding_rowHealth, binding_rowOther,
+          binding_rowShopping, binding_rowTransport, tvAnalyticsTitle, tvBreakdownTitle,
+          tvEmptyChart, tvTotalAnalytics);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
