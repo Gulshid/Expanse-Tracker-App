@@ -63,8 +63,8 @@
 35        android:supportsRtl="true"
 35-->/Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:11:9-35
 36        android:testOnly="true"
-37        android:theme="@style/Theme.ExpanseTracker" >
-37-->/Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:12:9-52
+37        android:theme="@style/Theme.ExpanseTracker.Splash" >
+37-->/Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:12:9-59
 38        <activity
 38-->/Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:15:9-23:20
 39            android:name="com.gulshid.expensetracker.ui.MainActivity"

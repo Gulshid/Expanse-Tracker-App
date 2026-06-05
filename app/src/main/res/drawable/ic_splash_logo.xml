@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Wallet icon in gold -->
+    <path
+        android:fillColor="#F5C842"
+        android:pathData="M78,35H30c-4.4,0-8,3.6-8,8v22c0,4.4,3.6,8,8,8h48c4.4,0,8-3.6,8-8V43C86,38.6,82.4,35,78,35z
+                          M76,62c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4S78.2,62,76,62z"/>
+    <path
+        android:fillColor="#F5C842"
+        android:pathData="M30,33h48l-6-8H36L30,33z"/>
+</vector>

@@ -5,6 +5,7 @@ INJECTED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/
 INJECTED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:2:1-27:12
 INJECTED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:2:1-27:12
 MERGED from [androidx.databinding:viewbinding:8.10.1] /Users/mac/.gradle/caches/8.11.1/transforms/4d601e5bdfa52866bc4410b11f6413ca/transformed/viewbinding-8.10.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/mac/.gradle/caches/8.11.1/transforms/deab24c36ea5c74a80d78a593d9908a4/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-common:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/a8b0fc1c553a04697b3de2e72f98d324/transformed/navigation-common-2.8.9/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/41f4f7ac23456197b5ededda0296b328/transformed/navigation-common-ktx-2.8.9/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-runtime:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/ff6aa7d3e1d3cd350607e76995b8ef29/transformed/navigation-runtime-2.8.9/AndroidManifest.xml:17:1-22:12
@@ -204,7 +205,7 @@ MERGED from [com.google.android.play:core-common:2.0.3] /Users/mac/.gradle/cache
 	android:allowBackup
 		ADDED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:12:9-52
+		ADDED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:12:9-59
 	android:name
 		ADDED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml:6:9-68
 activity#com.gulshid.expensetracker.ui.MainActivity
@@ -229,6 +230,8 @@ INJECTED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/
 INJECTED from /Users/mac/Documents/github_repo/Expanse-Tracker-App/app/src/main/AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:8.10.1] /Users/mac/.gradle/caches/8.11.1/transforms/4d601e5bdfa52866bc4410b11f6413ca/transformed/viewbinding-8.10.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:viewbinding:8.10.1] /Users/mac/.gradle/caches/8.11.1/transforms/4d601e5bdfa52866bc4410b11f6413ca/transformed/viewbinding-8.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/mac/.gradle/caches/8.11.1/transforms/deab24c36ea5c74a80d78a593d9908a4/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/mac/.gradle/caches/8.11.1/transforms/deab24c36ea5c74a80d78a593d9908a4/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-common:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/a8b0fc1c553a04697b3de2e72f98d324/transformed/navigation-common-2.8.9/AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-common:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/a8b0fc1c553a04697b3de2e72f98d324/transformed/navigation-common-2.8.9/AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.9] /Users/mac/.gradle/caches/8.11.1/transforms/41f4f7ac23456197b5ededda0296b328/transformed/navigation-common-ktx-2.8.9/AndroidManifest.xml:5:5-44

@@ -32,6 +32,7 @@ color gold_light
 color gradient_end
 color gradient_start
 color hint_color
+color ic_launcher_background
 color input_bg
 color input_stroke
 color nav_item_color
@@ -78,6 +79,7 @@ drawable ic_nav_analytics
 drawable ic_nav_dashboard
 drawable ic_nav_history
 drawable ic_person
+drawable ic_splash_logo
 id action_dashboardFragment_to_addExpenseFragment
 id action_loginFragment_to_dashboardFragment
 id action_loginFragment_to_registerFragment
@@ -285,5 +287,6 @@ style ShapeLarge
 style ShapeMedium
 style ShapeSmall
 style Theme.ExpanseTracker
+style Theme.ExpanseTracker.Splash
 xml backup_rules
 xml data_extraction_rules

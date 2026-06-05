@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-vi/values-vi.xml",
+            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-59:/values-vi/values-vi.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/8.11.1/transforms/9b9bc56b731f3405d46255f829b3156f/transformed/core-1.16.0/res/values-vi/values-vi.xml",

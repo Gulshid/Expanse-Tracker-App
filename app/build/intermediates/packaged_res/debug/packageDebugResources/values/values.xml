@@ -29,6 +29,7 @@
     <color name="gradient_end">#0E1117</color>
     <color name="gradient_start">#1D3461</color>
     <color name="hint_color">#4A5268</color>
+    <color name="ic_launcher_background">#C49A00</color>
     <color name="input_bg">#11151F</color>
     <color name="on_gold">#1A1200</color>
     <color name="text_muted">#4A5268</color>
@@ -246,4 +247,10 @@
         <item name="cornerSize">10dp</item>
     </style>
     <style name="Theme.ExpanseTracker" parent="Base.Theme.ExpanseTracker"/>
+    <style name="Theme.ExpanseTracker.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0E1117</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">#C49A00</item>
+        <item name="postSplashScreenTheme">@style/Theme.ExpanseTracker</item>
+    </style>
 </resources>

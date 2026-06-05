@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-es-rUS/values-es-rUS.xml",
+            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-59:/values-es-rUS/values-es-rUS.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/8.11.1/transforms/3fb568af462f3771767ca41cc9def8b9/transformed/play-services-base-18.5.0/res/values-es-rUS/values.xml",

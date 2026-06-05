@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-58:/values-tr/values-tr.xml",
+            "outputFile": "com.gulshid.expensetracker.app-mergeDebugResources-59:/values-tr/values-tr.xml",
             "map": [
                 {
                     "source": "/Users/mac/.gradle/caches/8.11.1/transforms/0c2204a02361892ce8aeac7a7c9d05e9/transformed/credentials-1.2.0-rc01/res/values-tr/values-tr.xml",

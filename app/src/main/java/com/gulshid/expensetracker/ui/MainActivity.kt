@@ -1,10 +1,12 @@
 package com.gulshid.expensetracker.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
@@ -29,9 +31,12 @@ class MainActivity : AppCompatActivity() {
         R.id.registerFragment
     )
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         // ✅ FIX: Apply saved theme preference BEFORE setContentView
         // so the correct theme is applied on Activity recreation after toggle.
+        installSplashScreen()
+        super.onCreate(savedInstanceState)
         val prefs = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
         val isDark = prefs.getBoolean("dark_mode", true)
         AppCompatDelegate.setDefaultNightMode(
@@ -39,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             else AppCompatDelegate.MODE_NIGHT_NO
         )
 
-        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
