@@ -1,5 +1,6 @@
 package com.gulshid.expensetracker.ui.history
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.FragmentHistoryBinding
 import com.gulshid.expensetracker.domain.model.Expense
@@ -57,11 +57,14 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.dialog_delete_expense, null)
 
-        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DeleteDialogStyle)
-            .setView(dialogView)
-            .create()
+        val dialog = android.app.Dialog(requireContext(), R.style.DeleteDialogStyle)
+        dialog.setContentView(dialogView)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.90).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
-        // Populate expense details
         val name = expense.description.ifBlank { expense.category }
         dialogView.findViewById<TextView>(R.id.tvExpenseName).text = name
         dialogView.findViewById<TextView>(R.id.tvExpenseCategory).text = expense.category
@@ -71,7 +74,6 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         dialogView.findViewById<MaterialButton>(R.id.btnCancel).setOnClickListener {
             dialog.dismiss()
         }
-
         dialogView.findViewById<MaterialButton>(R.id.btnDelete).setOnClickListener {
             viewModel.deleteExpense(expense.id)
             dialog.dismiss()

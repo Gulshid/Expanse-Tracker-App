@@ -1,11 +1,11 @@
 package com.gulshid.expensetracker.ui.dashboard
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.FragmentDashboardBinding
@@ -96,11 +95,14 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.dialog_delete_expense, null)
 
-        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DeleteDialogStyle)
-            .setView(dialogView)
-            .create()
+        val dialog = android.app.Dialog(requireContext(), R.style.DeleteDialogStyle)
+        dialog.setContentView(dialogView)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.90).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
-        // Populate expense details
         val name = expense.description.ifBlank { expense.category }
         dialogView.findViewById<TextView>(R.id.tvExpenseName).text = name
         dialogView.findViewById<TextView>(R.id.tvExpenseCategory).text = expense.category
@@ -110,7 +112,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         dialogView.findViewById<MaterialButton>(R.id.btnCancel).setOnClickListener {
             dialog.dismiss()
         }
-
         dialogView.findViewById<MaterialButton>(R.id.btnDelete).setOnClickListener {
             viewModel.deleteExpense(expense.id)
             dialog.dismiss()

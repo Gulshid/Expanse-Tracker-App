@@ -2,11 +2,9 @@ package com.gulshid.expensetracker.ui.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.gulshid.expensetracker.R
 import com.gulshid.expensetracker.databinding.ItemExpenseCardBinding
 import com.gulshid.expensetracker.domain.model.Expense
 import java.text.SimpleDateFormat
@@ -42,18 +40,16 @@ class ExpenseAdapter(
             binding.tvCategoryEmoji.text  = categoryEmoji(expense.category)
             binding.tvPaymentMethod.text  = expense.paymentMethod
 
-            // Long-press → show confirmation dialog before deleting
+
             binding.root.setOnLongClickListener {
-                AlertDialog.Builder(binding.root.context, R.style.AlertDialogTheme)
-                    .setTitle("Delete Expense")
-                    .setMessage("Are you sure you want to delete \"${expense.description.ifBlank { expense.category }}\"?")
-                    .setPositiveButton("Delete") { _, _ ->
-                        onDeleteClick(expense)
-                    }
-                    .setNegativeButton("Cancel", null)
-                    .show()
+                onDeleteClick(expense)
                 true
             }
+
+
+
+
+
         }
 
         private fun formatDate(millis: Long): String =

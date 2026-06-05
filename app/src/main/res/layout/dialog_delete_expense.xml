@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="28dp"
-    android:background="@color/card_bg">
+    android:background="@drawable/bg_dialog_container">
 
     <!-- Icon container with red glow effect -->
     <FrameLayout

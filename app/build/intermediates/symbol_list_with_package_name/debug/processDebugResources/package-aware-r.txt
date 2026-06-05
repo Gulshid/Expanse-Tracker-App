@@ -3130,6 +3130,7 @@ drawable bg_circle_accent
 drawable bg_delete_detail_card
 drawable bg_delete_glow
 drawable bg_delete_icon
+drawable bg_dialog_container
 drawable bg_glow_gold
 drawable bg_hero_gradient
 drawable bg_payment_badge
@@ -4737,6 +4738,7 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style ShapeAppearance_DeleteDialog
 style ShapeAppearance_M3_Comp_Badge_Large_Shape
 style ShapeAppearance_M3_Comp_Badge_Shape
 style ShapeAppearance_M3_Comp_BottomAppBar_Container_Shape

@@ -63,6 +63,7 @@ drawable bg_circle_accent
 drawable bg_delete_detail_card
 drawable bg_delete_glow
 drawable bg_delete_icon
+drawable bg_dialog_container
 drawable bg_glow_gold
 drawable bg_hero_gradient
 drawable bg_payment_badge
@@ -279,6 +280,7 @@ style DialogButtonNegativeStyle
 style DialogButtonStyle
 style InputFieldStyle
 style PrimaryButtonStyle
+style ShapeAppearance.DeleteDialog
 style ShapeLarge
 style ShapeMedium
 style ShapeSmall
